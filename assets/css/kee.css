@@ -1,0 +1,1175 @@
+/* ==========================================================================
+   K.E.E Technologies — design layer
+   Ported from kee-technologies.vercel.app so the portfolio matches the
+   company brand: Sora + Space Grotesk type, cyan/violet/amber accents,
+   glass cards, hero banner slideshow and the AI assistant.
+   ========================================================================== */
+
+:root {
+  --kee-cyan: #22d3ee;
+  --kee-blue: #017bb6;
+  --kee-violet: #8b5cf6;
+  --kee-amber: #fbbf24;
+  --kee-green: #34d399;
+  --kee-orange: #fb6000;
+  --kee-radius: 26px;
+
+  --kee-bg-2: #0a0c1c;
+  --kee-line: rgba(255, 255, 255, 0.1);
+  --kee-glass: linear-gradient(180deg, #ffffff17, #ffffff0a);
+  --kee-ink: #eef2ff;
+  --kee-muted: rgba(226, 232, 255, 0.62);
+  --kee-faint: rgba(226, 232, 255, 0.4);
+  --kee-grad: linear-gradient(120deg, #017bb6, #22d3ee 40%, #8b5cf6 70%, #fb6000);
+  --kee-shadow: 0 20px 58px -20px rgba(0, 0, 0, 0.55);
+  --kee-shadow-glow: 0 30px 80px -30px rgba(139, 92, 246, 0.55);
+
+  --font-display: 'Sora', system-ui, sans-serif;
+  --font-body: 'Space Grotesk', system-ui, sans-serif;
+}
+
+[data-theme='light'] {
+  --kee-bg-2: #ffffff;
+  --kee-line: rgba(15, 23, 42, 0.13);
+  --kee-glass: linear-gradient(180deg, #ffffff, #f4f7fb);
+  --kee-ink: #0b1220;
+  --kee-muted: rgba(15, 23, 42, 0.68);
+  --kee-faint: rgba(15, 23, 42, 0.48);
+  --kee-cyan: #017bb6;
+  --kee-violet: #6d28d9;
+  --kee-shadow: 0 20px 58px -24px rgba(15, 23, 42, 0.28);
+  --kee-shadow-glow: 0 26px 70px -32px rgba(30, 58, 138, 0.4);
+}
+
+/* ---------- Typography ---------- */
+
+/* Horizontal-overflow containment.
+
+   The page had a pre-existing 71px horizontal overflow at 390px, and the
+   banner rebuild made it 187px. On mobile Chrome that widens the *layout*
+   viewport, which pushed the fixed assistant launcher off-screen and made
+   it unclickable. Clamping the document to the viewport fixes the scroll
+   and keeps every fixed element anchored where it belongs. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* The tech marquee is a deliberately wide scrolling strip — clip it at the
+   section so it cannot push the document wider. */
+.tech-marquee {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body,
+.section-title,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+.hero-title,
+.kee-eyebrow,
+.brand-logo,
+.stat-number,
+.kee-section-title {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.kee-grad-text {
+  background: var(--kee-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ---------- Section headings ---------- */
+
+.kee-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--kee-cyan);
+  margin-bottom: 0.9rem;
+}
+
+.kee-section-title {
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  font-weight: 800;
+  line-height: 1.08;
+  margin: 0 0 1rem;
+}
+
+.kee-section-lede {
+  color: var(--kee-muted);
+  font-size: clamp(1rem, 1.5vw, 1.12rem);
+  max-width: 62ch;
+  margin: 0 auto 3rem;
+}
+
+/* ==========================================================================
+   HERO BANNER SLIDESHOW
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 0 90px;
+  overflow: hidden;
+}
+
+.hero-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 1.1s ease, transform 7s linear;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(1.05) brightness(1);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.45) 26%, #000 52%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.45) 26%, #000 52%, #000 100%);
+}
+
+.hero-bg-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(5, 6, 15, 0.95) 0%, rgba(5, 6, 15, 0.55) 40%, rgba(5, 6, 15, 0.2) 62%, rgba(5, 6, 15, 0.05) 78%, transparent 100%),
+    linear-gradient(0deg, rgba(5, 6, 15, 0.65) 0%, transparent 40%, rgba(5, 6, 15, 0.2) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding: 0 6vw;
+}
+
+.hero-copy {
+  max-width: 980px;
+}
+
+.hero-title {
+  font-size: clamp(2.1rem, 5.4vw, 4.3rem);
+  font-weight: 800;
+  line-height: 1.05;
+  margin: 0.85rem 0 0.75rem;
+}
+
+.hero-text {
+  color: var(--text-muted);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  max-width: 56ch;
+  margin-bottom: 1.4rem;
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 1.3rem;
+}
+
+.kee-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.7rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.kee-btn-primary {
+  color: #fff;
+  background: var(--kee-grad);
+  box-shadow: 0 14px 34px -14px rgba(1, 123, 182, 0.85);
+}
+
+.kee-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 44px -14px rgba(139, 92, 246, 0.8);
+}
+
+.kee-btn-ghost {
+  color: var(--kee-cyan);
+  border-color: color-mix(in srgb, var(--kee-cyan) 45%, var(--kee-line));
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.kee-btn-ghost:hover {
+  transform: translateY(-3px);
+  border-color: var(--kee-cyan);
+  background: color-mix(in srgb, var(--kee-cyan) 14%, transparent);
+}
+
+/* Slide meta + controls */
+.hero-slide-meta {
+  position: absolute;
+  z-index: 4;
+  right: 6vw;
+  bottom: 96px;
+  max-width: 320px;
+  text-align: right;
+  pointer-events: none;
+}
+
+.hero-slide-meta strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.hero-slide-meta span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--kee-muted);
+  margin-top: 0.25rem;
+}
+
+.hero-controls {
+  position: absolute;
+  right: 4vw;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.hero-arrow {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: rgba(17, 24, 39, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.hero-arrow:hover {
+  transform: translateY(-3px);
+  border-color: var(--kee-cyan);
+}
+
+.hero-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 2.2rem;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.hero-dot {
+  width: 26px;
+  height: 5px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  opacity: 0.4;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.hero-dot.is-active {
+  opacity: 1;
+  width: 44px;
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.4);
+}
+
+/* Stats belt under the banner copy */
+.hero-stats-belt {
+  position: relative;
+  z-index: 6;
+  width: 100%;
+  max-width: 1400px;
+  margin: 2.6rem auto 0;
+  padding: 0 6vw;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.hero-stat {
+  padding: 1.15rem 1.3rem;
+  border-radius: 18px;
+  border: 1px solid var(--kee-line);
+  background: var(--kee-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.hero-stat strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1;
+  background: var(--kee-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-stat span {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--kee-muted);
+}
+
+/* ==========================================================================
+   PROJECT CARDS (ported from the KEE site)
+   ========================================================================== */
+
+.kee-projects {
+  padding: 110px 0;
+}
+
+.kee-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 1.6rem;
+}
+
+.project-card {
+  --card-accent: var(--kee-cyan);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--kee-radius);
+  border: 1px solid color-mix(in srgb, var(--card-accent) 22%, var(--kee-line));
+  background: var(--kee-glass), var(--kee-bg-2);
+  box-shadow: var(--kee-shadow);
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--card-accent) 55%, var(--kee-line));
+  box-shadow: var(--kee-shadow-glow);
+}
+
+.project-screen {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: color-mix(in srgb, var(--card-accent) 10%, #05060f);
+}
+
+.project-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.project-card:hover .project-screen img {
+  transform: scale(1.04);
+}
+
+.project-screen-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.12) 50%, transparent 65%);
+  transform: translateX(-120%);
+  transition: transform 0.9s ease;
+  pointer-events: none;
+}
+
+.project-card:hover .project-screen-shine {
+  transform: translateX(120%);
+}
+
+.project-live {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #d1fae5;
+  background: rgba(16, 185, 129, 0.16);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.project-live i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--kee-green);
+  display: inline-block;
+  margin-right: 0.35rem;
+  box-shadow: 0 0 10px var(--kee-green);
+  animation: kee-pulse 1.6s infinite;
+}
+
+.project-body {
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  flex: 1;
+}
+
+.project-body h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.project-body p {
+  color: var(--kee-muted);
+  font-size: 0.93rem;
+  margin: 0;
+  flex: 1;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-tag {
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  color: var(--card-accent);
+  border: 1px solid color-mix(in srgb, var(--card-accent) 32%, var(--kee-line));
+  background: color-mix(in srgb, var(--card-accent) 10%, transparent);
+}
+
+.project-actions {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-top: 0.3rem;
+}
+
+.project-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.83rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--kee-cyan);
+  padding: 0.5rem 0.95rem;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--kee-blue) 40%, var(--kee-line));
+  background: color-mix(in srgb, var(--kee-blue) 12%, transparent);
+  transition: all 0.2s ease;
+}
+
+.project-action:hover {
+  transform: translateY(-2px);
+  border-color: var(--kee-cyan);
+  background: color-mix(in srgb, var(--kee-blue) 24%, transparent);
+}
+
+.project-action.is-muted {
+  color: var(--kee-muted);
+  border-color: var(--kee-line);
+  background: transparent;
+}
+
+/* Filter chips */
+.kee-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 2.6rem;
+}
+
+.kee-filter button {
+  padding: 0.5rem 1.05rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--kee-muted);
+  border: 1px solid var(--kee-line);
+  background: rgba(255, 255, 255, 0.03);
+  transition: all 0.2s ease;
+}
+
+.kee-filter button:hover {
+  color: var(--kee-cyan);
+  border-color: var(--kee-cyan);
+  transform: translateY(-2px);
+}
+
+.kee-filter button.is-active {
+  color: #fff;
+  border-color: transparent;
+  background: var(--kee-grad);
+}
+
+/* ==========================================================================
+   GITHUB STATS CARD
+   Replaces the dead github-readme-stats.vercel.app embed, which now returns
+   HTTP 503 (DEPLOYMENT_PAUSED) on every request. Rendering the figures
+   locally means the card can never break offline or on a cold deploy.
+   ========================================================================== */
+
+.gh-card {
+  display: block;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: left;
+  text-decoration: none;
+  background: linear-gradient(150deg, rgba(34, 211, 238, 0.07), rgba(139, 92, 246, 0.07));
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gh-card:hover {
+  color: inherit;
+  transform: translateY(-4px);
+  border-color: rgba(34, 211, 238, 0.5);
+  box-shadow: 0 18px 40px -18px rgba(34, 211, 238, 0.45);
+}
+
+.gh-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gh-card-avatar {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid rgba(34, 211, 238, 0.4);
+}
+
+.gh-card-top strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  color: var(--text-strong);
+}
+
+.gh-card-top span {
+  font-size: 0.76rem;
+  color: var(--text-dim);
+}
+
+.gh-card-top .fa-github {
+  margin-left: auto;
+  font-size: 1.5rem;
+  color: var(--text-dim);
+}
+
+.gh-card-nums {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 18px 0 14px;
+  text-align: center;
+}
+
+.gh-card-nums strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--accent-cyan);
+}
+
+.gh-card-nums span {
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.gh-card-langs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.gh-card-langs span {
+  padding: 4px 9px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+/* ==========================================================================
+   FLOATING PROFILE BADGE
+   Moved to the bottom-left so it never covers the AI assistant launcher
+   (they previously collided in the bottom-right corner and the badge
+   swallowed every click on the assistant).
+   ========================================================================== */
+
+.global-profile-badge {
+  left: 30px;
+  right: auto;
+  z-index: 9998;
+}
+
+@media only screen and (max-width: 992px) {
+  .global-profile-badge {
+    left: 18px;
+    bottom: 18px;
+    width: 54px;
+    height: 54px;
+  }
+}
+
+/* ==========================================================================
+   AI ASSISTANT
+   Desktop-first: the launcher is always visible from 900px up, and the
+   panel is a fixed side panel rather than a mobile-only sheet.
+   ========================================================================== */
+
+.assistant-root {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 10000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.assistant-launcher {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1.35rem 0.55rem 0.55rem;
+  border: 0;
+  border-radius: 999px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  background: rgba(17, 24, 39, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background-image: linear-gradient(120deg, rgba(1, 123, 182, 0.35), rgba(139, 92, 246, 0.28) 55%, rgba(251, 96, 0, 0.24));
+  box-shadow: 0 18px 44px -14px rgba(1, 123, 182, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.assistant-launcher:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 22px 52px -14px rgba(139, 92, 246, 0.65);
+}
+
+.assistant-launcher[hidden] {
+  display: none;
+}
+
+.assistant-launcher-bot {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: radial-gradient(circle at 32% 28%, #2dd4bf, #017bb6 58%, #0b1740);
+  box-shadow: 0 0 0 2px rgba(45, 212, 191, 0.35), 0 10px 24px -8px rgba(1, 123, 182, 0.8), inset 0 0 18px rgba(45, 212, 191, 0.45);
+  animation: kee-robot-scan 3.2s ease-in-out infinite;
+}
+
+.assistant-bot-tip {
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  width: 10px;
+  height: 3px;
+  border-radius: 4px;
+  background: #2dd4bf;
+  box-shadow: 0 -6px 0 -1px #2dd4bf, 0 -6px 8px #2dd4bf;
+  transform: translateX(-50%);
+}
+
+.assistant-status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.25), 0 0 12px #4ade80;
+  animation: kee-pulse 1.6s infinite;
+  flex: none;
+}
+
+.assistant-launcher-bot .assistant-status-dot {
+  position: absolute;
+  right: 1px;
+  bottom: 1px;
+  box-shadow: 0 0 0 2px rgba(5, 7, 10, 0.9), 0 0 12px #4ade80;
+}
+
+.assistant-panel {
+  display: none;
+  flex-direction: column;
+  width: min(420px, calc(100vw - 24px));
+  height: min(620px, calc(100dvh - 140px));
+  margin-bottom: 0.9rem;
+  border-radius: 24px;
+  border: 1px solid var(--kee-line);
+  overflow: hidden;
+  box-shadow: var(--kee-shadow-glow);
+  background: var(--kee-bg-2);
+}
+
+.assistant-panel.is-open {
+  display: flex;
+  animation: kee-assistant-pop 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: bottom right;
+}
+
+.assistant-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  background: linear-gradient(120deg, rgba(1, 123, 182, 0.32), rgba(139, 92, 246, 0.26) 55%, rgba(251, 96, 0, 0.22));
+  border-bottom: 1px solid var(--kee-line);
+  flex: none;
+}
+
+.assistant-avatar {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: var(--kee-grad);
+  box-shadow: 0 8px 20px -8px rgba(1, 123, 182, 0.7);
+  font-weight: 800;
+  font-family: var(--font-display);
+}
+
+.assistant-avatar .assistant-status-dot {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid var(--kee-bg-2);
+}
+
+.assistant-title {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  flex: 1;
+  min-width: 0;
+}
+
+.assistant-title strong {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  color: var(--kee-ink);
+}
+
+.assistant-title small {
+  color: var(--kee-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.assistant-close {
+  width: 32px;
+  height: 32px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--kee-line);
+  border-radius: 10px;
+  color: var(--kee-muted);
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.assistant-close:hover {
+  color: var(--kee-ink);
+  border-color: var(--kee-cyan);
+  transform: translateY(-2px);
+}
+
+.assistant-body {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(34, 211, 238, 0.45) transparent;
+}
+
+.assistant-msg {
+  max-width: 86%;
+  padding: 0.7rem 0.95rem;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.assistant-msg.user {
+  align-self: flex-end;
+  color: #fff;
+  background: linear-gradient(120deg, var(--kee-blue), var(--kee-cyan));
+  border-bottom-right-radius: 6px;
+  box-shadow: 0 10px 24px -12px rgba(1, 123, 182, 0.6);
+}
+
+.assistant-msg.bot {
+  align-self: flex-start;
+  color: var(--kee-ink);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--kee-line);
+  border-bottom-left-radius: 6px;
+}
+
+[data-theme='light'] .assistant-msg.bot {
+  background: rgba(15, 23, 42, 0.04);
+}
+
+.assistant-msg a {
+  color: var(--kee-cyan);
+}
+
+.assistant-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.6rem;
+}
+
+.assistant-action {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.42rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--kee-blue) 45%, var(--kee-line));
+  background: color-mix(in srgb, var(--kee-blue) 14%, transparent);
+  color: var(--kee-cyan);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.assistant-action:hover {
+  transform: translateY(-2px);
+  border-color: var(--kee-cyan);
+  background: color-mix(in srgb, var(--kee-blue) 24%, transparent);
+}
+
+.assistant-typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.3rem 0;
+}
+
+.assistant-typing i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--kee-muted);
+  animation: kee-typing 1.1s infinite;
+}
+
+.assistant-typing i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.assistant-typing i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.assistant-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0.6rem 1rem 0.1rem;
+  flex: none;
+}
+
+.assistant-chips button {
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--kee-cyan) 40%, var(--kee-line));
+  background: color-mix(in srgb, var(--kee-cyan) 10%, transparent);
+  color: var(--kee-cyan);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.assistant-chips button:hover {
+  background: color-mix(in srgb, var(--kee-cyan) 22%, transparent);
+  transform: translateY(-2px);
+}
+
+.assistant-input {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.8rem;
+  border-top: 1px solid var(--kee-line);
+  flex: none;
+}
+
+.assistant-input input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.7rem 0.95rem;
+  border: 1px solid var(--kee-line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--kee-ink);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+[data-theme='light'] .assistant-input input {
+  background: rgba(15, 23, 42, 0.03);
+}
+
+.assistant-input input::placeholder {
+  color: var(--kee-faint);
+}
+
+.assistant-input input:focus {
+  border-color: var(--kee-cyan);
+}
+
+.assistant-send {
+  width: 42px;
+  height: 42px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--kee-grad);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.assistant-send:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px -10px rgba(251, 96, 0, 0.65);
+}
+
+.assistant-send:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---------- Animations ---------- */
+
+@keyframes kee-pulse {
+  0%, to { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+@keyframes kee-robot-scan {
+  0%, to { box-shadow: 0 0 0 2px rgba(45, 212, 191, 0.35), 0 10px 24px -8px rgba(1, 123, 182, 0.8), inset 0 0 18px rgba(45, 212, 191, 0.45); }
+  50% { box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.55), 0 12px 30px -8px rgba(1, 123, 182, 0.95), inset 0 0 26px rgba(45, 212, 191, 0.7); }
+}
+
+@keyframes kee-assistant-pop {
+  0% { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes kee-typing {
+  0%, 60%, to { transform: translateY(0); opacity: 0.5; }
+  30% { transform: translateY(-5px); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide,
+  .project-screen img,
+  .project-screen-shine {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+/* Tablet */
+@media only screen and (max-width: 1200px) {
+  .hero-slide-meta { display: none; }
+}
+
+@media only screen and (max-width: 992px) {
+  .hero {
+    padding: 110px 0 80px;
+  }
+
+  .hero-content {
+    padding: 0 6vw;
+  }
+
+  .hero-slide img {
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    opacity: 0.5;
+  }
+
+  .hero-bg-veil {
+    background: linear-gradient(0deg, rgba(5, 6, 15, 0.92) 0%, rgba(5, 6, 15, 0.6) 55%, rgba(5, 6, 15, 0.35) 100%);
+  }
+
+  .hero-stats-belt {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-controls { display: none; }
+}
+
+/* Phone */
+@media only screen and (max-width: 600px) {
+  .hero {
+    min-height: 100svh;
+    padding: 100px 0 70px;
+  }
+
+  .hero-stats-belt {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem;
+  }
+
+  .hero-stat { padding: 0.9rem 1rem; }
+  .hero-stat strong { font-size: 1.5rem; }
+
+  .kee-projects { padding: 70px 0; }
+  .kee-projects-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+
+  .assistant-root {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .assistant-launcher {
+    padding: 0.5rem;
+  }
+
+  .assistant-launcher-label {
+    display: none;
+  }
+
+  .assistant-panel {
+    width: calc(100vw - 20px);
+    height: min(72dvh, calc(100dvh - 100px));
+  }
+}
+
+/* Small phones: assistant goes full-screen like the KEE site */
+@media only screen and (max-width: 420px) {
+  .assistant-panel {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    margin-bottom: 0;
+    border-radius: 0;
+  }
+}
