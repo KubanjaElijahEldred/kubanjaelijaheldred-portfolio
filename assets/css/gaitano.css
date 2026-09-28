@@ -739,9 +739,17 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
 .project-live { font-family: ui-monospace, monospace !important; font-size: 10px !important; letter-spacing: 0.14em !important; color: #E85C1A !important; }
 
 /* ---------- IoT deck (full-width research presentation cards) ---------- */
-.project-card.iot-deck {
+.iot-decks-grid {
   grid-column: 1 / -1;
-  padding: clamp(1.25rem, 2.5vw, 2rem);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+  align-items: start;
+}
+.project-card.iot-deck {
+  grid-column: auto;
+  padding: clamp(1rem, 1.6vw, 1.4rem);
+  min-width: 0;
 }
 .iot-deck-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
 .iot-deck-titles h3 {
@@ -770,12 +778,12 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
   margin: 0 0 1rem !important;
 }
 .iot-deck-photo { overflow: hidden; border: 1px solid rgba(232, 92, 26, 0.35) !important; }
-.iot-deck-photo img { display: block; width: 100%; max-height: 420px; object-fit: cover; }
+.iot-deck-photo img { display: block; width: 100%; max-height: 250px; object-fit: cover; }
 .iot-deck-slides {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 10px;
-  margin-top: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+  gap: 8px;
+  margin-top: 12px;
 }
 .iot-deck-slides figure { margin: 0 !important; border: 1px solid #1E1E1E !important; }
 .iot-deck-slides figure:hover { border-color: #a855f7 !important; }
@@ -820,8 +828,11 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
 [data-theme="light"] .iot-deck-list li span { color: #6B7280 !important; }
 [data-theme="light"] .iot-deck-lists h4 { border-bottom-color: #E5E7EB !important; }
 
-@media (max-width: 720px) {
+@media (max-width: 1100px) {
   .iot-deck-lists { grid-template-columns: 1fr; }
+}
+@media (max-width: 940px) {
+  .iot-decks-grid { grid-template-columns: 1fr; }
   .iot-deck-badges { align-items: flex-start; }
 }
 
