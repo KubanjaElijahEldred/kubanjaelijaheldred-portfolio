@@ -164,8 +164,8 @@ nav {
   line-height: 80px;
 }
 [data-theme="light"] nav {
-  background: linear-gradient(90deg, rgba(232, 92, 26, 0.14) 0%, rgba(168, 85, 247, 0.13) 52%, rgba(59, 130, 246, 0.15) 100%), #FFFFFF !important;
-  border-bottom-color: #E5E7EB !important;
+  background: linear-gradient(90deg, #E85C1A 0%, #a855f7 52%, #3b82f6 100%) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.16) !important;
 }
 
 .brand-logo {
@@ -176,7 +176,7 @@ nav {
   color: #ffffff !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
 }
-[data-theme="light"] .brand-logo { color: #111827 !important; text-shadow: none; }
+[data-theme="light"] .brand-logo { color: #ffffff !important; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18); }
 .brand-logo-img {
   display: block;
   height: 50px;
@@ -197,8 +197,8 @@ nav ul li a:not(.nav-cta) {
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
 }
 nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff !important; border-color: #0A0A0A !important; }
-[data-theme="light"] nav ul li a:not(.nav-cta) { color: #111827 !important; background: rgba(17, 24, 39, 0.06) !important; border-color: #D1D5DB !important; }
-[data-theme="light"] nav ul li a:not(.nav-cta):hover { background: #111827 !important; color: #ffffff !important; border-color: #111827 !important; }
+[data-theme="light"] nav ul li a:not(.nav-cta) { color: #ffffff !important; background: rgba(10, 10, 10, 0.28) !important; border-color: rgba(255, 255, 255, 0.55) !important; }
+[data-theme="light"] nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff !important; border-color: #0A0A0A !important; }
 
 .nav-cta {
   font-family: 'Syne', sans-serif !important;
@@ -215,8 +215,8 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
 }
 .nav-cta:hover { background: #0A0A0A !important; color: #ffffff !important; border-color: #0A0A0A !important; }
-[data-theme="light"] .nav-cta { background: rgba(17, 24, 39, 0.06) !important; color: #111827 !important; border-color: #D1D5DB !important; }
-[data-theme="light"] .nav-cta:hover { background: #111827 !important; color: #ffffff !important; border-color: #111827 !important; }
+[data-theme="light"] .nav-cta { background: rgba(10, 10, 10, 0.28) !important; color: #ffffff !important; border-color: rgba(255, 255, 255, 0.55) !important; }
+[data-theme="light"] .nav-cta:hover { background: #0A0A0A !important; color: #ffffff !important; border-color: #0A0A0A !important; }
 
 .hamburger {
   border: 1px solid rgba(255, 255, 255, 0.55) !important;
@@ -225,16 +225,16 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
   background: rgba(10, 10, 10, 0.28) !important;
 }
 .hamburger:hover { background: #0A0A0A !important; border-color: #0A0A0A !important; }
-[data-theme="light"] .hamburger { color: #111827 !important; border-color: #D1D5DB !important; background: rgba(17, 24, 39, 0.06) !important; }
-[data-theme="light"] .hamburger:hover { background: #111827 !important; border-color: #111827 !important; color: #ffffff !important; }
+[data-theme="light"] .hamburger { color: #ffffff !important; border-color: rgba(255, 255, 255, 0.55) !important; background: rgba(10, 10, 10, 0.28) !important; }
+[data-theme="light"] .hamburger:hover { background: #0A0A0A !important; border-color: #0A0A0A !important; color: #ffffff !important; }
 
 .mobile-nav {
   background: linear-gradient(90deg, #E85C1A 0%, #a855f7 52%, #3b82f6 100%) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.16) !important;
 }
 [data-theme="light"] .mobile-nav {
-  background: linear-gradient(90deg, rgba(232, 92, 26, 0.14) 0%, rgba(168, 85, 247, 0.13) 52%, rgba(59, 130, 246, 0.15) 100%), #FFFFFF !important;
-  border-bottom-color: #E5E7EB !important;
+  background: linear-gradient(90deg, #E85C1A 0%, #a855f7 52%, #3b82f6 100%) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.16) !important;
 }
 .mobile-nav-content ul li a {
   font-family: 'Syne', sans-serif !important;
@@ -246,8 +246,8 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
   background: rgba(10, 10, 10, 0.28) !important;
 }
 .mobile-nav-content ul li a:hover { background: #0A0A0A !important; border-color: #0A0A0A !important; }
-[data-theme="light"] .mobile-nav-content ul li a { color: #111827 !important; border-color: #D1D5DB !important; background: rgba(17, 24, 39, 0.06) !important; }
-[data-theme="light"] .mobile-nav-content ul li a:hover { background: #111827 !important; border-color: #111827 !important; color: #ffffff !important; }
+[data-theme="light"] .mobile-nav-content ul li a { color: #ffffff !important; border-color: rgba(255, 255, 255, 0.35) !important; background: rgba(10, 10, 10, 0.28) !important; }
+[data-theme="light"] .mobile-nav-content ul li a:hover { background: #0A0A0A !important; border-color: #0A0A0A !important; color: #ffffff !important; }
 
 /* ---------- Hero ---------- */
 .hero { background: #0A0A0A !important; }
@@ -655,7 +655,115 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
   background: #111111 !important;
 }
 
-.gh-card { border: 1px solid #1E1E1E !important; background: #111111 !important; border-radius: 0 !important; }
+/* ---------- Ray-lit card surface ----------
+   Ported from the .family-card treatment in the "ONE CATALOGUE" section of
+   labs.chatoner.com: two soft corner glows that die out by ~50-58% so the card
+   face stays clean, plus four thin edge beams ("rays") catching the rim
+   instead of a gradient that occupies the whole card.
+
+   Kept inside the noir language — square corners, #0A0A0A/#111111 surfaces,
+   orange as the secondary beam against each card's own accent. */
+.project-card,
+.gh-card {
+  --ray-primary: var(--card-accent, #E85C1A);
+  --ray-secondary: #E85C1A;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Corner light. Each glow fades to fully transparent well before the far edge,
+   so the middle of the card is untouched. */
+.project-card,
+.gh-card {
+  background:
+    radial-gradient(130% 100% at 0% 0%, color-mix(in srgb, var(--ray-primary) 16%, transparent), transparent 50%),
+    radial-gradient(110% 90% at 100% 100%, color-mix(in srgb, var(--ray-secondary) 12%, transparent), transparent 58%),
+    #111111 !important;
+}
+
+[data-theme="light"] .project-card,
+[data-theme="light"] .gh-card {
+  background:
+    radial-gradient(130% 100% at 0% 0%, color-mix(in srgb, var(--ray-primary) 11%, transparent), transparent 50%),
+    radial-gradient(110% 90% at 100% 100%, color-mix(in srgb, var(--ray-secondary) 8%, transparent), transparent 58%),
+    #FFFFFF !important;
+}
+
+/* The rays themselves: two beams in the card's own accent along the top and
+   left, two in orange along the bottom and right, each only 2px and a third of
+   the card's length.
+
+   These sit ABOVE the children on purpose. The card's top half is an opaque
+   screenshot, so at z-index -1 the top and left beams were completely hidden
+   and only a sliver of orange showed at one corner. At z-index 2 the beams
+   read as light catching the rim, and because they are only 2px wide against
+   1.6rem of body padding they never touch the text. pointer-events keeps the
+   whole card clickable. */
+.project-card::after,
+.gh-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image:
+    linear-gradient(90deg, var(--ray-primary), transparent 15%),
+    linear-gradient(180deg, var(--ray-primary), transparent 17%),
+    linear-gradient(270deg, var(--ray-secondary), transparent 17%),
+    linear-gradient(0deg, var(--ray-secondary), transparent 17%);
+  background-size: 36% 2px, 2px 42%, 34% 2px, 2px 40%;
+  background-position: 0 0, 0 0, 100% 100%, 100% 100%;
+  background-repeat: no-repeat;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--ray-primary) 45%, transparent));
+  transition: opacity 0.25s ease, filter 0.25s ease;
+}
+
+/* Blurred orb, kept behind the content at z-index -1 and anchored just below
+   the screenshot so it lands on the body rather than being hidden by the image. */
+.project-card::before,
+.gh-card::before {
+  content: "";
+  position: absolute;
+  top: 44%;
+  right: -48px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: var(--ray-primary);
+  opacity: 0.16;
+  filter: blur(30px);
+  pointer-events: none;
+  z-index: -1;
+  transition: opacity 0.25s ease;
+}
+
+.project-card:hover::after,
+.gh-card:hover::after {
+  opacity: 1;
+  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--ray-primary) 65%, transparent));
+}
+
+.project-card:hover::before,
+.gh-card:hover::before {
+  opacity: 0.26;
+}
+
+/* On white the beams need more weight to register at all. */
+[data-theme="light"] .project-card::after,
+[data-theme="light"] .gh-card::after {
+  opacity: 1;
+  background-size: 38% 2px, 2px 44%, 36% 2px, 2px 42%;
+}
+
+[data-theme="light"] .project-card::before,
+[data-theme="light"] .gh-card::before {
+  opacity: 0.1;
+}
+
+.gh-card { border: 1px solid #1E1E1E !important; border-radius: 0 !important; }
 .gh-card:hover { border-color: #E85C1A !important; }
 .gh-card-top span, .gh-card-nums span, .gh-card-langs span { color: #71717A !important; }
 
@@ -692,14 +800,15 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
 .kee-filter button.is-active { background: #E85C1A !important; border-color: #E85C1A !important; color: #ffffff !important; }
 [data-theme="light"] .kee-filter button { color: #4B5563 !important; }
 
+/* background is owned by the ray-lit surface block above, so it is not
+   re-stamped here — that would flatten the corner glows back to solid noir. */
 .project-card {
-  background: #111111 !important;
   border: 1px solid #1E1E1E !important;
   border-radius: 0 !important;
   box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.7) !important;
 }
-.project-card:hover { transform: translateY(-4px) !important; border-color: #E85C1A !important; background: #131313 !important; }
-[data-theme="light"] .project-card { background: #FFFFFF !important; box-shadow: 0 24px 60px -30px rgba(17, 24, 39, 0.25) !important; }
+.project-card:hover { transform: translateY(-4px) !important; border-color: #E85C1A !important; }
+[data-theme="light"] .project-card { box-shadow: 0 24px 60px -30px rgba(17, 24, 39, 0.25) !important; }
 
 .project-body h3 {
   font-size: 1.35rem !important;
@@ -1016,9 +1125,6 @@ footer a:hover { color: #E85C1A !important; }
 [data-theme="light"] b {
   color: #111827 !important;
 }
-
-[data-theme="light"] nav ul li a:not(.nav-cta) { color: #4B5563 !important; }
-[data-theme="light"] nav ul li a:not(.nav-cta):hover { color: #C2410C !important; }
 
 [data-theme="light"] .hero-current { background: #FFFFFF !important; border-color: #E5E7EB !important; }
 [data-theme="light"] .hero-current div { color: #374151 !important; }
