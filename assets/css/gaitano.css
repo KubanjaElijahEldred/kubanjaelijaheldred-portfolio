@@ -790,3 +790,66 @@ footer a:hover { color: #E85C1A !important; }
   nav { height: 68px; line-height: 68px; }
   .hero-title { font-size: clamp(2.4rem, 11vw, 3.4rem) !important; }
 }
+
+/* ---------- Light-mode text inversion (white text → near-black for visibility) ---------- */
+[data-theme="light"] strong,
+[data-theme="light"] b {
+  color: #111827 !important;
+}
+
+[data-theme="light"] nav ul li a:not(.nav-cta) { color: #4B5563 !important; }
+[data-theme="light"] nav ul li a:not(.nav-cta):hover { color: #C2410C !important; }
+
+[data-theme="light"] .hero-current { background: #FFFFFF !important; border-color: #E5E7EB !important; }
+[data-theme="light"] .hero-current div { color: #374151 !important; }
+[data-theme="light"] .hero-current i { color: #C2410C !important; }
+
+[data-theme="light"] .tech-badge,
+[data-theme="light"] .badge-python,
+[data-theme="light"] .badge-django,
+[data-theme="light"] .badge-flutter,
+[data-theme="light"] .badge-react,
+[data-theme="light"] .badge-javascript,
+[data-theme="light"] .badge-nodejs,
+[data-theme="light"] .badge-typescript,
+[data-theme="light"] .badge-java,
+[data-theme="light"] .badge-vue,
+[data-theme="light"] .badge-angular,
+[data-theme="light"] .badge-tailwind,
+[data-theme="light"] .badge-bootstrap,
+[data-theme="light"] .badge-express,
+[data-theme="light"] .badge-postgres,
+[data-theme="light"] .badge-mongodb,
+[data-theme="light"] .badge-docker,
+[data-theme="light"] .badge-git,
+[data-theme="light"] .badge-aws,
+[data-theme="light"] .badge-ai {
+  color: #374151 !important;
+  background: #FFFFFF !important;
+  border-color: #E5E7EB !important;
+}
+
+[data-theme="light"] .project-action {
+  color: #374151 !important;
+  border-color: #D1D5DB !important;
+}
+[data-theme="light"] .project-action:hover,
+[data-theme="light"] .project-action.is-muted:hover {
+  border-color: #C2410C !important;
+  color: #C2410C !important;
+  background: rgba(232, 92, 26, 0.08) !important;
+}
+
+[data-theme="light"] .gh-card { background: #FFFFFF !important; border-color: #E5E7EB !important; }
+
+[data-theme="light"] .resume-paper { background: #FFFFFF !important; border-color: #E5E7EB !important; }
+[data-theme="light"] .resume-item { border-bottom-color: #E5E7EB !important; }
+
+[data-theme="light"] .social-btn,
+[data-theme="light"] .social-icon-box {
+  background: #FFFFFF !important;
+  color: #374151 !important;
+  border-color: #E5E7EB !important;
+}
+[data-theme="light"] .social-btn:hover,
+[data-theme="light"] .social-icon-box:hover { color: #C2410C !important; border-color: #C2410C !important; }
