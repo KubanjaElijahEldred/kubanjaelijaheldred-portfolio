@@ -8,9 +8,14 @@
   
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-  <link rel="icon" href="assets/img/elijah-avatar.jpg" />
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="assets/img/favicon/manifest.json" />
+  <meta name="theme-color" content="#0A0A0A" />
 
   <style>
     :root {
@@ -573,9 +578,56 @@
     }
   </style>
   <link rel="stylesheet" href="assets/css/kee.css" />
+  <link rel="stylesheet" href="assets/css/gaitano.css" />
 </head>
 
 <body>
+
+  <!-- ================= SPLASH SCREEN / ANIMATED LOADER ================= -->
+  <div class="splash" id="splash" aria-hidden="true">
+    <div class="splash-inner">
+      <div class="splash-mark">
+        <span class="splash-logo">K.E.E</span>
+        <span class="splash-tag">Engineering the Future of Smart Technology</span>
+      </div>
+      <div class="splash-progress"><span id="splashBar"></span></div>
+      <div class="splash-meta">
+        <span class="splash-dot"></span>
+        <span class="splash-label">Loading Experience</span>
+        <span class="splash-pct" id="splashPct">0%</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var splash = document.getElementById('splash');
+      var bar = document.getElementById('splashBar');
+      var pct = document.getElementById('splashPct');
+      if (!splash) return;
+      var DURATION = 5200;
+      var start = Date.now();
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+
+      function tick() {
+        var t = Math.min((Date.now() - start) / DURATION, 1);
+        var p = Math.round(t * 100);
+        if (bar) bar.style.width = p + '%';
+        if (pct) pct.textContent = p + '%';
+        if (t < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          splash.classList.add('splash-done');
+          setTimeout(function () {
+            splash.style.display = 'none';
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+          }, 750);
+        }
+      }
+      requestAnimationFrame(tick);
+    })();
+  </script>
 
   <!-- Sidebar Navigation -->
   <div class="sidebar">
