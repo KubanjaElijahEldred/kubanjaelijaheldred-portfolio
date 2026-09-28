@@ -655,6 +655,13 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
   background: #111111 !important;
 }
 
+/* Core Technologies card: reuses the .gh-card surface so it keeps the same
+   ray-lit effects as the GitHub card beside it. */
+.tech-card { margin-top: 24px; cursor: default; }
+.tech-card h4 { margin: 0 0 16px; font-size: 15px; line-height: 1.2; }
+.tech-card div { margin-bottom: 22px; }
+.tech-card div:last-child { margin-bottom: 0; }
+
 /* ---------- Ray-lit card surface ----------
    Ported from the .family-card treatment in the "ONE CATALOGUE" section of
    labs.chatoner.com: two soft corner glows that die out by ~50-58% so the card
@@ -673,21 +680,55 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
 }
 
 /* Corner light. Each glow fades to fully transparent well before the far edge,
-   so the middle of the card is untouched. */
+   so the middle of the card is untouched.
+
+   Four layers. The two glows and the faint diagonal tint are clipped to
+   padding-box so they stay on the card face; the saturated orange->violet->blue
+   ramp is border-box against a transparent 1px border, which is what draws the
+   gradient edge.
+
+   These MUST be longhands. The background shorthand accepts a <box> value only
+   once for the whole declaration, so writing "..., padding-box, ..., border-box"
+   inside background: is invalid and the browser drops the entire declaration -
+   which is exactly why the earlier gradient attempt left cards fully
+   transparent. background-clip is a list and has to be set per layer.
+
+   The tint layer is opaque (color-mixed against the surface colour rather than
+   layered as an alpha wash) for the same reason: a border-box background is
+   painted across the whole border box, so an opaque padding-box layer is what
+   hides the ramp from the card interior and leaves it on the 1px rim. */
 .project-card,
 .gh-card {
-  background:
+  border: 1px solid transparent !important;
+  background-image:
     radial-gradient(130% 100% at 0% 0%, color-mix(in srgb, var(--ray-primary) 16%, transparent), transparent 50%),
     radial-gradient(110% 90% at 100% 100%, color-mix(in srgb, var(--ray-secondary) 12%, transparent), transparent 58%),
-    #111111 !important;
+    linear-gradient(160deg, color-mix(in srgb, #E85C1A 7%, #111111) 0%, color-mix(in srgb, #3b82f6 8%, #111111) 100%),
+    linear-gradient(135deg, #E85C1A 0%, #a855f7 50%, #3b82f6 100%);
+  background-clip: padding-box, padding-box, padding-box, border-box !important;
+}
+
+/* Hover lifts the glows and brightens both the tint and the border ramp. The
+   border stays transparent on purpose: setting border-color here would paint
+   over the border-box gradient and kill the gradient edge. */
+.project-card:hover,
+.gh-card:hover {
+  background-image:
+    radial-gradient(130% 100% at 0% 0%, color-mix(in srgb, var(--ray-primary) 22%, transparent), transparent 50%),
+    radial-gradient(110% 90% at 100% 100%, color-mix(in srgb, var(--ray-secondary) 18%, transparent), transparent 58%),
+    linear-gradient(160deg, color-mix(in srgb, #ff7524 12%, #131313) 0%, color-mix(in srgb, #60a5fa 14%, #131313) 100%),
+    linear-gradient(135deg, #ff7524 0%, #c084fc 50%, #60a5fa 100%);
+  background-clip: padding-box, padding-box, padding-box, border-box !important;
 }
 
 [data-theme="light"] .project-card,
 [data-theme="light"] .gh-card {
-  background:
+  background-image:
     radial-gradient(130% 100% at 0% 0%, color-mix(in srgb, var(--ray-primary) 11%, transparent), transparent 50%),
     radial-gradient(110% 90% at 100% 100%, color-mix(in srgb, var(--ray-secondary) 8%, transparent), transparent 58%),
-    #FFFFFF !important;
+    linear-gradient(160deg, color-mix(in srgb, #E85C1A 5%, #FFFFFF) 0%, color-mix(in srgb, #3b82f6 6%, #FFFFFF) 100%),
+    linear-gradient(135deg, #E85C1A 0%, #a855f7 50%, #3b82f6 100%);
+  background-clip: padding-box, padding-box, padding-box, border-box !important;
 }
 
 /* The rays themselves: two beams in the card's own accent along the top and
@@ -763,8 +804,8 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
   opacity: 0.1;
 }
 
-.gh-card { border: 1px solid #1E1E1E !important; border-radius: 0 !important; }
-.gh-card:hover { border-color: #E85C1A !important; }
+/* border/background come from the ray-lit surface block above. */
+.gh-card { border-radius: 0 !important; }
 .gh-card-top span, .gh-card-nums span, .gh-card-langs span { color: #71717A !important; }
 
 /* ---------- Projects ---------- */
@@ -800,33 +841,53 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
 .kee-filter button.is-active { background: #E85C1A !important; border-color: #E85C1A !important; color: #ffffff !important; }
 [data-theme="light"] .kee-filter button { color: #4B5563 !important; }
 
-/* background is owned by the ray-lit surface block above, so it is not
-   re-stamped here — that would flatten the corner glows back to solid noir. */
+/* background and border are owned by the ray-lit surface block above, so they
+   are not re-stamped here — that would flatten the corner glows and overwrite
+   the gradient border. */
 .project-card {
-  border: 1px solid #1E1E1E !important;
   border-radius: 0 !important;
   box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.7) !important;
 }
-.project-card:hover { transform: translateY(-4px) !important; border-color: #E85C1A !important; }
+.project-card:hover { transform: translateY(-4px) !important; }
 [data-theme="light"] .project-card { box-shadow: 0 24px 60px -30px rgba(17, 24, 39, 0.25) !important; }
 
+/* Gradient title text. The light-mode override that forced a solid fill was
+   dropped on purpose so the ramp reads in both themes; at 1.35rem bold the
+   orange end still clears 3:1 against white. */
 .project-body h3 {
   font-size: 1.35rem !important;
   line-height: 1.1 !important;
+  background: linear-gradient(120deg, #E85C1A 0%, #a855f7 55%, #3b82f6 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
 }
 .project-body p { font-size: 0.875rem !important; line-height: 1.7 !important; color: #A1A1AA !important; }
 
+/* Tags reuse each card's own accent so they line up with that card's rays
+   instead of forcing one colour onto all twenty. Longhands again: background-clip
+   is a list, the background shorthand is not. The tint is color-mixed against an
+   opaque base so the border-box ramp stays on the tag's 1px edge. */
 .project-tag {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace !important;
   font-size: 9px !important;
   letter-spacing: 0.16em !important;
   text-transform: uppercase !important;
-  color: #D4D4D8 !important;
-  background: #0A0A0A !important;
-  border: 1px solid #262626 !important;
+  color: #ffffff !important;
+  border: 1px solid transparent !important;
   border-radius: 0 !important;
+  background-image:
+    linear-gradient(160deg, color-mix(in srgb, var(--card-accent, #E85C1A) 22%, #0A0A0A) 0%, color-mix(in srgb, #E85C1A 18%, #0A0A0A) 100%),
+    linear-gradient(135deg, var(--card-accent, #E85C1A) 0%, #E85C1A 100%);
+  background-clip: padding-box, border-box !important;
 }
-[data-theme="light"] .project-tag { background: #F8F9FA !important; color: #374151 !important; }
+[data-theme="light"] .project-tag {
+  color: #111827 !important;
+  background-image:
+    linear-gradient(160deg, color-mix(in srgb, var(--card-accent, #E85C1A) 12%, #FFFFFF) 0%, color-mix(in srgb, #E85C1A 10%, #FFFFFF) 100%),
+    linear-gradient(135deg, var(--card-accent, #E85C1A) 0%, #E85C1A 100%);
+  background-clip: padding-box, border-box !important;
+}
 
 .project-action {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace !important;
@@ -864,6 +925,10 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
 .iot-deck-titles h3 {
   font-size: clamp(1.4rem, 2.4vw, 1.8rem) !important;
   margin: 0 0 4px !important;
+  background: linear-gradient(120deg, #E85C1A 0%, #a855f7 55%, #3b82f6 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
 }
 .iot-deck-tagline { margin: 0 !important; color: #A1A1AA !important; font-size: 0.95rem !important; }
 .iot-deck-badges { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
@@ -887,7 +952,7 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
   margin: 0 0 1rem !important;
 }
 .iot-deck-photo { overflow: hidden; border: 1px solid rgba(232, 92, 26, 0.35) !important; }
-.iot-deck-photo img { display: block; width: 100%; max-height: 250px; object-fit: cover; }
+.iot-deck-photo img { display: block; width: 100%; height: auto; object-fit: contain; }
 .iot-deck-slides {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
@@ -896,7 +961,7 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
 }
 .iot-deck-slides figure { margin: 0 !important; border: 1px solid #1E1E1E !important; }
 .iot-deck-slides figure:hover { border-color: #a855f7 !important; }
-.iot-deck-slides img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.iot-deck-slides img { display: block; width: 100%; height: auto; object-fit: contain; }
 .iot-deck-lists { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 28px; margin-top: 20px; }
 .iot-deck-lists h4 {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace !important;
