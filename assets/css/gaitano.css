@@ -577,10 +577,20 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
 [data-theme="light"] .kee-btn-ghost { color: #374151 !important; }
 
 /* profile image in the hero */
+.hero-content.hero-split {
+  align-items: flex-start !important;
+}
+.hero-profile {
+  flex: 0 0 auto !important;
+  margin: 4.9rem 0 0 0 !important;
+}
 .hero-profile-img {
+  width: clamp(320px, 34vw, 470px) !important;
+  height: clamp(320px, 34vw, 470px) !important;
   border-radius: 0 !important;
   border: 1px solid rgba(232, 92, 26, 0.6) !important;
   box-shadow: 0 0 0 8px rgba(232, 92, 26, 0.08), 0 30px 80px rgba(0, 0, 0, 0.7) !important;
+  object-fit: cover;
 }
 
 .hero-stats-belt {
