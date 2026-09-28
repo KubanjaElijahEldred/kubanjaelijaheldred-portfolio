@@ -1191,7 +1191,18 @@ footer a:hover { color: #E85C1A !important; }
 /* ---------- Responsive cleanup ---------- */
 @media (max-width: 900px) {
   nav { height: 68px; line-height: 68px; }
+  #intro { padding-top: 104px; }
   .hero-title { font-size: clamp(2.4rem, 11vw, 3.4rem) !important; }
+  .hero-content.hero-split { align-items: center !important; }
+  .hero-profile { margin: 0 !important; }
+  .hero-profile-img {
+    width: clamp(200px, 55vw, 240px) !important;
+    height: clamp(200px, 55vw, 240px) !important;
+  }
+}
+@media (max-width: 600px) {
+  #intro { padding-top: 84px; }
+  .hero { padding: 84px 0 70px; }
 }
 
 /* ---------- Light-mode text inversion (white text → near-black for visibility) ---------- */
