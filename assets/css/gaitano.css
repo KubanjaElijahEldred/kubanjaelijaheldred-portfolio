@@ -249,13 +249,197 @@ nav ul li a:not(.nav-cta):hover { color: #E85C1A !important; }
 }
 [data-theme="light"] .hero-badge span { color: #C2410C !important; }
 
-.kee-grad-text {
-  background: linear-gradient(120deg, #E85C1A, #ff8b40) !important;
+.kee-grad-text,
+.grad-orange {
+  background: linear-gradient(120deg, #E85C1A 0%, #a855f7 55%, #3b82f6 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: transparent !important;
 }
+
+.grad-text,
+.grad-orb {
+  background: linear-gradient(115deg, #E85C1A 0%, #f472b6 30%, #a855f7 60%, #60a5fa 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+.grad-blue {
+  background: linear-gradient(115deg, #3b82f6, #8b5cf6 60%, #E85C1A) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+/* Animated heading gradients */
+.grad-animated {
+  background: linear-gradient(120deg, #E85C1A, #a855f7, #3b82f6, #E85C1A) !important;
+  background-size: 300% 100% !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  animation: gradShift 6s linear infinite !important;
+}
+@keyframes gradShift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* ---------- Full-bleed layout (no side gutters beyond a small pad) ---------- */
+.container,
+.hero-content {
+  width: 100% !important;
+  max-width: none !important;
+}
+.container { padding: 0 clamp(1.25rem, 4vw, 4rem) !important; }
+.hero-content { padding: 0 clamp(1.5rem, 5vw, 5rem) !important; }
+
+/* ---------- Contact: orange + purple over black gradient ---------- */
+#contact {
+  position: relative;
+  border-top: 1px solid #1E1E1E !important;
+  background:
+    radial-gradient(1100px 560px at 88% -12%, rgba(139, 92, 246, 0.4) 0%, transparent 58%),
+    radial-gradient(820px 480px at 6% 112%, rgba(232, 92, 26, 0.32) 0%, transparent 55%),
+    radial-gradient(900px 520px at 55% 55%, rgba(59, 130, 246, 0.12) 0%, transparent 60%),
+    #0A0A0A !important;
+}
+#contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 64px 64px, 64px 64px;
+}
+#contact > .container { position: relative; z-index: 1; }
+[data-theme="light"] #contact {
+  background:
+    radial-gradient(1100px 560px at 88% -12%, rgba(139, 92, 246, 0.18) 0%, transparent 58%),
+    radial-gradient(820px 480px at 6% 112%, rgba(232, 92, 26, 0.16) 0%, transparent 55%),
+    #F8F9FA !important;
+}
+
+/* contact channel cards (Email / WhatsApp / GitHub / LinkedIn) */
+.contact-channels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.contact-channel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.2rem;
+  background: rgba(255, 255, 255, 0.035) !important;
+  border: 1px solid #1E1E1E !important;
+  border-radius: 0 !important;
+  color: #D4D4D8 !important;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease !important;
+}
+.contact-channel:hover {
+  border-color: #E85C1A !important;
+  background: rgba(232, 92, 26, 0.08) !important;
+  transform: translateY(-2px) !important;
+}
+.contact-channel-icon {
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(232, 92, 26, 0.4) !important;
+  color: #E85C1A !important;
+  font-size: 1.2rem !important;
+}
+.contact-channel-body { min-width: 0; }
+.contact-channel-body b {
+  display: block;
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 0.95rem !important;
+  color: #ffffff !important;
+  letter-spacing: 0.04em;
+}
+.contact-channel-body span {
+  display: block;
+  font-family: ui-monospace, monospace !important;
+  font-size: 10px !important;
+  letter-spacing: 0.08em !important;
+  color: #71717A !important;
+  margin-top: 2px;
+}
+.contact-channel .contact-arrow {
+  margin-left: auto;
+  color: #3F3F46 !important;
+  transition: color 0.2s ease, transform 0.2s ease !important;
+}
+.contact-channel:hover .contact-arrow { color: #E85C1A !important; transform: translateX(3px) !important; }
+[data-theme="light"] .contact-channel { background: rgba(17, 24, 39, 0.04) !important; }
+[data-theme="light"] .contact-channel:hover { background: rgba(232, 92, 26, 0.08) !important; }
+[data-theme="light"] .contact-channel-body b { color: #111827 !important; }
+
+/* ---------- Resume certifications ---------- */
+.cert-item {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid #1E1E1E !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  margin-bottom: 0.7rem;
+}
+.cert-item:hover { border-color: #E85C1A !important; }
+.cert-item-icon {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #E85C1A !important;
+  border: 1px solid rgba(232, 92, 26, 0.35) !important;
+  font-size: 1rem !important;
+}
+.cert-item-body { min-width: 0; flex: 1; }
+.cert-item-body b {
+  display: block;
+  color: #ffffff !important;
+  font-size: 0.92rem !important;
+  letter-spacing: 0.02em;
+}
+.cert-item-body span {
+  display: block;
+  font-family: ui-monospace, monospace !important;
+  font-size: 10px !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: #71717A !important;
+  margin-top: 2px;
+}
+.cert-item-verify {
+  flex: 0 0 auto;
+  font-family: ui-monospace, monospace !important;
+  font-size: 10px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: #E85C1A !important;
+  border: 1px solid rgba(232, 92, 26, 0.4) !important;
+  padding: 8px 12px !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap;
+}
+.cert-item-verify:hover { background: #E85C1A !important; color: #ffffff !important; }
+[data-theme="light"] .cert-item { background: rgba(17, 24, 39, 0.04) !important; }
+[data-theme="light"] .cert-item-body b { color: #111827 !important; }
 
 .hero-text { font-size: 1.05rem !important; line-height: 1.75 !important; max-width: 60ch !important; color: #A1A1AA !important; }
 [data-theme="light"] .hero-text { color: #4B5563 !important; }
@@ -461,17 +645,6 @@ input:focus, textarea:focus { border-color: #E85C1A !important; }
 }
 .btn-primary { background: #E85C1A !important; }
 
-/* contact form: sharpen + force readable colors over inline styles */
-#contact .col.s12.m6 > div {
-  border-radius: 0 !important;
-  border: 1px solid #1E1E1E !important;
-}
-#contact form button[type="submit"] {
-  background: #E85C1A !important;
-  color: #ffffff !important;
-  border-radius: 0 !important;
-}
-#contact form button[type="submit"]:hover { background: #ff7524 !important; }
 #contact #download-vcard { border-radius: 0 !important; }
 
 /* ---------- Social / sidebar legacy pieces ---------- */
