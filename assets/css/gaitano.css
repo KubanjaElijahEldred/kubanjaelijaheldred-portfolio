@@ -173,6 +173,11 @@ nav {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
 }
 [data-theme="light"] .brand-logo { color: #111827 !important; text-shadow: none; }
+.brand-logo-img {
+  display: block;
+  height: 42px;
+  width: auto;
+}
 
 nav ul li a:not(.nav-cta) {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace !important;
@@ -701,13 +706,17 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
   font-size: 10px !important;
   letter-spacing: 0.14em !important;
   text-transform: uppercase !important;
-  color: #D4D4D8 !important;
-  background: transparent !important;
-  border: 1px solid #262626 !important;
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #E85C1A 0%, #a855f7 55%, #3b82f6 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
   border-radius: 0 !important;
+  transition: filter 0.2s ease, transform 0.2s ease !important;
 }
-.project-action:hover { border-color: #E85C1A !important; color: #E85C1A !important; background: rgba(232, 92, 26, 0.06) !important; }
-.project-action.is-muted { color: #71717A !important; background: transparent !important; }
+.project-action:hover { filter: brightness(1.18) !important; transform: translateY(-2px) !important; }
+.project-action.is-muted {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, rgba(232, 92, 26, 0.5) 0%, rgba(168, 85, 247, 0.5) 55%, rgba(59, 130, 246, 0.5) 100%) !important;
+}
 
 .project-live { font-family: ui-monospace, monospace !important; font-size: 10px !important; letter-spacing: 0.14em !important; color: #E85C1A !important; }
 
@@ -925,14 +934,17 @@ footer a:hover { color: #E85C1A !important; }
 }
 
 [data-theme="light"] .project-action {
-  color: #374151 !important;
-  border-color: #D1D5DB !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
 }
 [data-theme="light"] .project-action:hover,
 [data-theme="light"] .project-action.is-muted:hover {
-  border-color: #C2410C !important;
-  color: #C2410C !important;
-  background: rgba(232, 92, 26, 0.08) !important;
+  filter: brightness(1.18) !important;
+  transform: translateY(-2px) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+}
+[data-theme="light"] .project-action.is-muted {
+  background: linear-gradient(135deg, rgba(232, 92, 26, 0.55) 0%, rgba(168, 85, 247, 0.55) 55%, rgba(59, 130, 246, 0.55) 100%) !important;
 }
 
 [data-theme="light"] .gh-card { background: #FFFFFF !important; border-color: #E5E7EB !important; }
