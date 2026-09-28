@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="icon" href="assets/img/elijah-avatar.jpg" />
 
   <style>
     :root {
@@ -635,35 +636,13 @@
     </div>
   </div>
 
-  <!-- ================= HERO BANNER SLIDESHOW ================= -->
+  <!-- ================= HERO ================= -->
   <section id="intro" class="hero">
     <div class="hero-stage" aria-hidden="true">
-      <div class="hero-bg" id="heroBg">
-
-        <div class="hero-slide is-active">
-          <img src="assets/img/projects/shopnet.webp" alt="" />
-        </div>
-        <div class="hero-slide">
-          <img src="assets/img/projects/muwas.webp" alt="" />
-        </div>
-        <div class="hero-slide">
-          <img src="assets/img/projects/chilltalk.webp" alt="" />
-        </div>
-        <div class="hero-slide">
-          <img src="assets/img/projects/lanegen.webp" alt="" />
-        </div>
-        <div class="hero-slide">
-          <img src="assets/img/projects/evzone.webp" alt="" />
-        </div>
-        <div class="hero-slide">
-          <img src="assets/img/elijah-banner.jpg" alt="" />
-        </div>
-
-      </div>
-      <div class="hero-bg-veil"></div>
+      <div class="hero-glow"></div>
     </div>
 
-    <div class="hero-content">
+    <div class="hero-content hero-split">
       <div class="hero-copy">
         <div class="hero-badge">
           <i class="fa fa-hand-paper-o"></i>
@@ -698,24 +677,11 @@
           </a>
         </div>
       </div>
-    </div>
 
-    <!-- Slide caption + controls -->
-    <div class="hero-slide-meta" id="heroMeta">
-      <strong>ShopNet E-Commerce Platform</strong>
-      <span>React · TypeScript · E-Commerce</span>
+      <figure class="hero-profile">
+        <img src="assets/img/elijah-profile.jpg" alt="Kubanja Elijah Eldred" class="hero-profile-img" />
+      </figure>
     </div>
-
-    <div class="hero-controls">
-      <button class="hero-arrow" id="heroPrev" type="button" aria-label="Previous slide">
-        <i class="fa fa-chevron-up"></i>
-      </button>
-      <button class="hero-arrow" id="heroNext" type="button" aria-label="Next slide">
-        <i class="fa fa-chevron-down"></i>
-      </button>
-    </div>
-
-    <div class="hero-dots" id="heroDots" role="tablist" aria-label="Banner slides"></div>
 
     <!-- Stats belt -->
     <div class="hero-stats-belt">
@@ -724,8 +690,8 @@
         <span>GitHub repositories</span>
       </div>
       <div class="hero-stat">
-        <strong>17</strong>
-        <span>Live flagship projects</span>
+        <strong>19</strong>
+        <span>Projects built &amp; research</span>
       </div>
       <div class="hero-stat">
         <strong>AI</strong>
@@ -846,6 +812,7 @@
         <button data-filter="media" type="button">Media &amp; Events</button>
         <button data-filter="fintech" type="button">Fintech</button>
         <button data-filter="creative" type="button">Creative</button>
+        <button data-filter="iot" type="button">IoT</button>
       </div>
 
       <div class="kee-projects-grid" id="projectsGrid">
@@ -1187,6 +1154,45 @@
               </div>
             </div>
           </article>
+          <article class="project-card" data-cat="iot" data-search="IoT Smart Wheelchair — Arm-Gesture Control & Fall Alerts Bugema University research concept — gesture-controlled wheelchair with automated fall alerts: Arduino Uno, MPU6050 motion sensing, 433MHz RF command link, GPS + GSM caregiver SMS. IoT Arduino MPU6050 Embedded Research" style="--card-accent:#22d3ee">
+            <div class="project-screen">
+              <img src="assets/img/projects/smartwheelchair.png" alt="IoT Smart Wheelchair" loading="lazy" />
+              <div class="project-screen-shine"></div>
+            </div>
+            <div class="project-body">
+              <h3>IoT Smart Wheelchair</h3>
+              <p>Arm-gesture wheelchair control with automated fall alerts — Arduino Uno, MPU6050 motion sensing and a 433MHz RF command link, GPS and GSM caregiver SMS, driven by a L298N motor unit. Details: presentation slides live in-page.</p>
+              <div class="project-tags">
+                <span class="project-tag">IoT</span>
+                <span class="project-tag">Arduino</span>
+                <span class="project-tag">MPU6050</span>
+                <span class="project-tag">Embedded</span>
+              </div>
+              <div class="project-actions">
+                <button class="project-action" type="button" onclick="openPpt()"><i class="fa fa-play-circle-o"></i> Live slides</button>
+                <a class="project-action" href="assets/ppt/IoT_Smart_Wheelchair_Presentation_Final_Updated.pptx" download target="_blank" rel="noopener noreferrer"><i class="fa fa-download"></i> Download .pptx</a>
+              </div>
+            </div>
+          </article>
+          <article class="project-card" data-cat="iot" data-search="SMART Dustbin IoT smart waste bin concept with fill-level sensing and automated alerts so collection crews only empty bins that actually need it — a cleaner, connected approach to waste management. IoT Sensors Automation Embedded Research" style="--card-accent:#34d399">
+            <div class="project-screen">
+              <img src="assets/img/projects/smartdustbin.png" alt="SMART Dustbin" loading="lazy" />
+              <div class="project-screen-shine"></div>
+            </div>
+            <div class="project-body">
+              <h3>SMART Dustbin</h3>
+              <p>IoT smart waste bin concept with fill-level sensing and automated alerts, so collection crews only empty bins that actually need it — a cleaner, connected approach to waste management.</p>
+              <div class="project-tags">
+                <span class="project-tag">IoT</span>
+                <span class="project-tag">Sensors</span>
+                <span class="project-tag">Automation</span>
+                <span class="project-tag">Embedded</span>
+              </div>
+              <div class="project-actions">
+                <span class="project-action is-muted"><i class="fa fa-cubes"></i> Concept project</span>
+              </div>
+            </div>
+          </article>
       </div>
 
       <div style="text-align:center; margin-top:3.2rem;">
@@ -1377,6 +1383,30 @@
     <p> 2025 Kubanja Elijah Eldred | Built with Passion & Code</p>
   </footer>
 
+  <!-- ================= PPT SLIDE VIEWER (IoT Smart Wheelchair) ================= -->
+  <div class="ppt-viewer" id="pptViewer" role="dialog" aria-modal="true" aria-label="IoT Smart Wheelchair presentation slides" hidden>
+    <div class="ppt-viewer-backdrop" onclick="closePpt()"></div>
+    <div class="ppt-viewer-panel">
+      <button class="ppt-viewer-close" type="button" onclick="closePpt()" aria-label="Close slides"><i class="fa fa-times"></i></button>
+      <div class="ppt-viewer-stage">
+        <img class="ppt-slide-img" src="assets/img/ppt/slide-1.png" alt="Slide 1 — Project cover" />
+        <img class="ppt-slide-img" src="assets/img/ppt/slide-2.png" alt="Slide 2 — Mobility and safety gaps" />
+        <img class="ppt-slide-img" src="assets/img/ppt/slide-3.png" alt="Slide 3 — Four measurable objectives" />
+        <img class="ppt-slide-img" src="assets/img/ppt/slide-4.png" alt="Slide 4 — Prototype components and roles" />
+        <img class="ppt-slide-img" src="assets/img/ppt/slide-5.png" alt="Slide 5 — Key references" />
+        <img class="ppt-slide-img" src="assets/img/ppt/slide-6.png" alt="Slide 6 — How the proposed system works" />
+      </div>
+      <div class="ppt-viewer-nav">
+        <button class="ppt-nav-btn" id="pptPrev" type="button" aria-label="Previous slide"><i class="fa fa-chevron-left"></i></button>
+        <span class="ppt-count" id="pptCount">1 / 6</span>
+        <button class="ppt-nav-btn" id="pptNext" type="button" aria-label="Next slide"><i class="fa fa-chevron-right"></i></button>
+      </div>
+      <div class="ppt-viewer-actions">
+        <a class="kee-btn kee-btn-ghost" href="assets/ppt/IoT_Smart_Wheelchair_Presentation_Final_Updated.pptx" download target="_blank" rel="noopener noreferrer"><i class="fa fa-download"></i> Download .pptx</a>
+      </div>
+    </div>
+  </div>
+
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
@@ -1386,71 +1416,6 @@
   </script>
 
   <script>
-    /* ================= HERO BANNER SLIDESHOW ================= */
-    (function () {
-      var slides = Array.prototype.slice.call(document.querySelectorAll('.hero-slide'));
-      var dotsWrap = document.getElementById('heroDots');
-      var meta = document.getElementById('heroMeta');
-      var prev = document.getElementById('heroPrev');
-      var next = document.getElementById('heroNext');
-      if (!slides.length) return;
-
-      var CAPTIONS = [
-        ['ShopNet E-Commerce Platform', 'React · TypeScript · E-Commerce'],
-        ['Muwas Distilling Platform', 'Web Platform · Brand Identity'],
-        ['Chill Talk Podcast Platform', 'Podcast · Media · Frontend'],
-        ['Lanegen Platform', 'Healthcare · Feedback · Web App'],
-        ['EV Zone Effects Hub', 'TypeScript · Creative · Effects'],
-        ['K.E.E Technologies Ltd', 'Managing Director · Uganda']
-      ];
-
-      var index = 0;
-      var timer = null;
-      var DURATION = 6000;
-
-      CAPTIONS.forEach(function (c, i) {
-        var b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'hero-dot' + (i === 0 ? ' is-active' : '');
-        b.setAttribute('role', 'tab');
-        b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-        b.addEventListener('click', function () { go(i); restart(); });
-        dotsWrap.appendChild(b);
-      });
-      var dots = Array.prototype.slice.call(dotsWrap.children);
-
-      function render() {
-        slides.forEach(function (s, i) { s.classList.toggle('is-active', i === index); });
-        dots.forEach(function (d, i) { d.classList.toggle('is-active', i === index); });
-        if (meta) {
-          meta.querySelector('strong').textContent = CAPTIONS[index][0];
-          meta.querySelector('span').textContent = CAPTIONS[index][1];
-        }
-      }
-
-      function go(i) {
-        index = (i + slides.length) % slides.length;
-        render();
-      }
-
-      function restart() {
-        if (timer) clearInterval(timer);
-        timer = setInterval(function () { go(index + 1); }, DURATION);
-      }
-
-      if (next) next.addEventListener('click', function () { go(index + 1); restart(); });
-      if (prev) prev.addEventListener('click', function () { go(index - 1); restart(); });
-
-      /* pause while the tab is hidden so we do not burn cycles */
-      document.addEventListener('visibilitychange', function () {
-        if (document.hidden) { if (timer) clearInterval(timer); }
-        else restart();
-      });
-
-      render();
-      restart();
-    })();
-
     /* ================= PROJECT FILTER ================= */
     (function () {
       var bar = document.getElementById('projectFilter');
@@ -1472,7 +1437,46 @@
       });
     })();
   </script>
-    
+
+  <script>
+    // ================= PPT SLIDE VIEWER (IoT Smart Wheelchair) =================
+    (function () {
+      var viewer = document.getElementById('pptViewer');
+      var slideEls = viewer ? Array.prototype.slice.call(viewer.querySelectorAll('.ppt-slide-img')) : [];
+      var countEl = document.getElementById('pptCount');
+      var prevBtn = document.getElementById('pptPrev');
+      var nextBtn = document.getElementById('pptNext');
+      var index = 0;
+
+      function show(i) {
+        index = (i + slideEls.length) % slideEls.length;
+        slideEls.forEach(function (s, n) { s.classList.toggle('is-active', n === index); });
+        if (countEl) countEl.textContent = (index + 1) + ' / ' + slideEls.length;
+      }
+
+      window.openPpt = function () {
+        if (!viewer) return;
+        viewer.hidden = false;
+        document.body.style.overflow = 'hidden';
+        show(0);
+      };
+
+      window.closePpt = function () {
+        if (!viewer) return;
+        viewer.hidden = true;
+        document.body.style.overflow = '';
+      };
+
+      if (prevBtn) prevBtn.addEventListener('click', function () { show(index - 1); });
+      if (nextBtn) nextBtn.addEventListener('click', function () { show(index + 1); });
+      document.addEventListener('keydown', function (e) {
+        if (!viewer || viewer.hidden) return;
+        if (e.key === 'Escape') closePpt();
+        if (e.key === 'ArrowLeft') show(index - 1);
+        if (e.key === 'ArrowRight') show(index + 1);
+      });
+    })();
+
     // Theme Switch Logic
     const themeBtn = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');

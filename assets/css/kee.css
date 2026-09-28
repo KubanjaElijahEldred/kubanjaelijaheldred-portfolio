@@ -1173,3 +1173,193 @@ h3,
     border-radius: 0;
   }
 }
+
+/* ==========================================================================
+   HERO — static background + restored profile image
+   ========================================================================== */
+
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(55% 60% at 82% 40%, rgba(0, 191, 255, 0.16) 0%, transparent 62%),
+    radial-gradient(45% 55% at 12% 30%, rgba(139, 92, 246, 0.14) 0%, transparent 60%),
+    linear-gradient(130deg, rgba(5, 6, 15, 0.6) 0%, transparent 55%);
+}
+
+.hero-content.hero-split {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.hero-profile {
+  flex: 0 0 auto;
+  margin: 0;
+  position: relative;
+}
+
+.hero-profile::before {
+  content: "";
+  position: absolute;
+  inset: -22px;
+  background: radial-gradient(closest-side, rgba(0, 242, 255, 0.28), transparent 70%);
+  filter: blur(6px);
+  z-index: -1;
+}
+
+.hero-profile-img {
+  display: block;
+  animation: heroFloat 7s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* project actions used as <button> */
+button.project-action {
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
+
+button.project-action:hover {
+  transform: translateY(-2px);
+  border-color: var(--kee-cyan);
+  background: color-mix(in srgb, var(--kee-blue) 24%, transparent);
+}
+
+/* ==========================================================================
+   PPT SLIDE VIEWER (IoT Smart Wheelchair presentation)
+   ========================================================================== */
+
+.ppt-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4vh 4vw;
+}
+
+.ppt-viewer[hidden] { display: none; }
+
+.ppt-viewer-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 5, 12, 0.88);
+  backdrop-filter: blur(6px);
+}
+
+.ppt-viewer-panel {
+  position: relative;
+  z-index: 1;
+  width: min(1080px, 100%);
+  max-height: 94vh;
+  background: var(--bg-secondary, #0a0f18);
+  border: 1px solid var(--glass-border, rgba(0, 242, 255, 0.15));
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.ppt-viewer-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border, rgba(0, 242, 255, 0.15));
+  background: rgba(5, 7, 10, 0.7);
+  color: #fff;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.ppt-viewer-close:hover { transform: scale(1.08); border-color: var(--kee-cyan, #22d3ee); }
+
+.ppt-viewer-stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+.ppt-slide-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #0a0f18;
+  opacity: 0;
+  transform: scale(0.985);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.ppt-slide-img.is-active { opacity: 1; transform: scale(1); }
+
+.ppt-viewer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ppt-nav-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border, rgba(0, 242, 255, 0.15));
+  background: transparent;
+  color: var(--text-main, #fff);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.ppt-nav-btn:hover { background: rgba(0, 242, 255, 0.08); transform: scale(1.05); }
+
+.ppt-count {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: 0.95rem;
+  color: var(--text-muted, rgba(255, 255, 255, 0.7));
+  min-width: 4.5rem;
+  text-align: center;
+}
+
+.ppt-viewer-actions {
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem 1.1rem;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .hero-content.hero-split {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.6rem;
+  }
+
+  .hero-copy { max-width: 100%; }
+
+  .hero-text,
+  .hero-current { margin-inline: auto; }
+
+  .hero-cta { justify-content: center; }
+
+  .hero-profile { order: -1; }
+
+  .ppt-viewer { padding: 2vh 2vw; }
+}
