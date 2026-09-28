@@ -438,6 +438,12 @@ nav ul li a:not(.nav-cta):hover { color: #E85C1A !important; }
   white-space: nowrap;
 }
 .cert-item-verify:hover { background: #E85C1A !important; color: #ffffff !important; }
+.cert-item-inline {
+  color: #E85C1A !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+.cert-item-inline:hover { color: #ff7524 !important; }
 [data-theme="light"] .cert-item { background: rgba(17, 24, 39, 0.04) !important; }
 [data-theme="light"] .cert-item-body b { color: #111827 !important; }
 
