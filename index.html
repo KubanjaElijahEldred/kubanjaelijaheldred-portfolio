@@ -1153,43 +1153,109 @@
               </div>
             </div>
           </article>
-          <article class="project-card" data-cat="iot" data-search="IoT Smart Wheelchair — Arm-Gesture Control & Fall Alerts Bugema University research concept — gesture-controlled wheelchair with automated fall alerts: Arduino Uno, MPU6050 motion sensing, 433MHz RF command link, GPS + GSM caregiver SMS. IoT Arduino MPU6050 Embedded Research" style="--card-accent:#22d3ee">
-            <div class="project-screen">
-              <img src="assets/img/projects/smartwheelchair.png" alt="IoT Smart Wheelchair" loading="lazy" />
-              <div class="project-screen-shine"></div>
+          <article class="project-card iot-deck" data-cat="iot" data-search="IoT Smart Wheelchair — Arm-Gesture Control & Fall Alerts Bugema University research concept — gesture-controlled wheelchair with automated fall alerts: Arduino Uno, MPU6050 motion sensing, 433MHz RF command link, GPS + GSM caregiver SMS. IoT Arduino MPU6050 Embedded Research" style="--card-accent:#22d3ee">
+            <div class="iot-deck-head">
+              <div class="iot-deck-titles">
+                <h3>IoT Smart Wheelchair</h3>
+                <p class="iot-deck-tagline">Arm-gesture control and fall alerts</p>
+              </div>
+              <div class="iot-deck-badges">
+                <span class="iot-deck-author">Kubanja Elijah Eldred</span>
+                <span class="iot-deck-count">6 slides</span>
+              </div>
             </div>
-            <div class="project-body">
-              <h3>IoT Smart Wheelchair</h3>
-              <p>Arm-gesture wheelchair control with automated fall alerts — Arduino Uno, MPU6050 motion sensing and a 433MHz RF command link, GPS and GSM caregiver SMS, driven by a L298N motor unit. Details: presentation slides live in-page.</p>
-              <div class="project-tags">
-                <span class="project-tag">IoT</span>
-                <span class="project-tag">Arduino</span>
-                <span class="project-tag">MPU6050</span>
-                <span class="project-tag">Embedded</span>
+            <p class="iot-deck-blurb">A gesture-controlled mobility prototype that removes the need for hand strength on the joystick. An MPU6050 on the arm unit reads motion gestures, a 433 MHz radio link commands the chair unit, and a suspected fall raises a local alarm plus a caregiver SMS through the SIM800L with GPS coordinates attached.</p>
+            <p class="iot-deck-meta">24/BSE/BU/R/0012 · Bugema University, Computing and Informatics</p>
+            <div class="iot-deck-photo">
+              <img src="assets/img/projects/smartwheelchair.png" alt="IoT Smart Wheelchair project photo" loading="lazy" />
+            </div>
+            <div class="iot-deck-slides">
+              <figure><img src="assets/img/ppt/wheelchair-1.webp" alt="IoT Smart Wheelchair — slide 1: Title &amp; concept" loading="lazy" /></figure>
+              <figure><img src="assets/img/ppt/wheelchair-2.webp" alt="IoT Smart Wheelchair — slide 2: Mobility and safety gaps" loading="lazy" /></figure>
+              <figure><img src="assets/img/ppt/wheelchair-3.webp" alt="IoT Smart Wheelchair — slide 3: Four measurable objectives" loading="lazy" /></figure>
+              <figure><img src="assets/img/ppt/wheelchair-4.webp" alt="IoT Smart Wheelchair — slide 4: Prototype: components and roles" loading="lazy" /></figure>
+              <figure><img src="assets/img/ppt/wheelchair-5.webp" alt="IoT Smart Wheelchair — slide 5: Key references" loading="lazy" /></figure>
+              <figure><img src="assets/img/ppt/wheelchair-6.webp" alt="IoT Smart Wheelchair — slide 6: How the system works" loading="lazy" /></figure>
+            </div>
+            <div style="margin-top:14px;"><button class="project-action" type="button" onclick="openPpt()"><i class="fa fa-play-circle-o"></i> View all 6 slides</button></div>
+            <div class="iot-deck-lists">
+              <div>
+                <h4>Components &amp; roles</h4>
+                <ul class="iot-deck-list">
+                  <li><strong>Arduino Uno ×2</strong><span>Arm unit and chair unit control</span></li>
+                  <li><strong>MPU6050</strong><span>Sense arm motion for gesture control</span></li>
+                  <li><strong>433 MHz RF pair</strong><span>Send commands to the chair</span></li>
+                  <li><strong>L298N / L293D</strong><span>Drive the model motors</span></li>
+                  <li><strong>SIM800L GSM</strong><span>Send caregiver SMS on a suspected fall</span></li>
+                  <li><strong>GPS module</strong><span>Get location coordinates</span></li>
+                  <li><strong>SG90 servos</strong><span>Optional steering</span></li>
+                  <li><strong>Li-ion supply</strong><span>Power the model</span></li>
+                </ul>
               </div>
-              <div class="project-actions">
-                <button class="project-action" type="button" onclick="openPpt()"><i class="fa fa-play-circle-o"></i> Live slides</button>
-                <a class="project-action" href="assets/ppt/IoT_Smart_Wheelchair_Presentation_Final_Updated.pptx" download target="_blank" rel="noopener noreferrer"><i class="fa fa-download"></i> Download .pptx</a>
+              <div>
+                <h4>Signal flow</h4>
+                <ol class="iot-deck-list">
+                  <li><strong>01 · Arm controller</strong><span>Reads gestures from the MPU6050</span></li>
+                  <li><strong>02 · Wheelchair model</strong><span>Executes the movement commands</span></li>
+                  <li><strong>03 · Caregiver</strong><span>Gets the SMS alert plus GPS coords</span></li>
+                </ol>
               </div>
+            </div>
+            <div class="iot-deck-actions">
+              <a class="project-action" href="assets/ppt/smart-wheelchair.pdf" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-pdf-o"></i> View PDF live</a>
+              <a class="project-action is-muted" href="assets/ppt/smart-wheelchair.pdf" target="_blank" rel="noopener noreferrer"><i class="fa fa-external-link"></i> Open in new tab</a>
+              <a class="project-action is-muted" href="assets/ppt/smart-wheelchair.pptx" download target="_blank" rel="noopener noreferrer"><i class="fa fa-download"></i> PowerPoint (.pptx)</a>
             </div>
           </article>
-          <article class="project-card" data-cat="iot" data-search="SMART Dustbin IoT smart waste bin concept with fill-level sensing and automated alerts so collection crews only empty bins that actually need it — a cleaner, connected approach to waste management. IoT Sensors Automation Embedded Research" style="--card-accent:#34d399">
-            <div class="project-screen">
-              <img src="assets/img/projects/smartdustbin.png" alt="SMART Dustbin" loading="lazy" />
-              <div class="project-screen-shine"></div>
+          <article class="project-card iot-deck" data-cat="iot" data-search="SMART Dustbin IoT smart waste bin concept with fill-level sensing and automated alerts so collection crews only empty bins that actually need it — a cleaner, connected approach to waste management. IoT Sensors Automation Embedded Research" style="--card-accent:#34d399">
+            <div class="iot-deck-head">
+              <div class="iot-deck-titles">
+                <h3>Smart IoT Dustbin</h3>
+                <p class="iot-deck-tagline">Touchless lid control with automatic sorting</p>
+              </div>
+              <div class="iot-deck-badges">
+                <span class="iot-deck-author">Demaga Lawrence</span>
+                <span class="iot-deck-count">6 slides</span>
+              </div>
             </div>
-            <div class="project-body">
-              <h3>SMART Dustbin</h3>
-              <p>IoT smart waste bin concept with fill-level sensing and automated alerts, so collection crews only empty bins that actually need it — a cleaner, connected approach to waste management.</p>
-              <div class="project-tags">
-                <span class="project-tag">IoT</span>
-                <span class="project-tag">Sensors</span>
-                <span class="project-tag">Automation</span>
-                <span class="project-tag">Embedded</span>
+            <p class="iot-deck-blurb">A connected waste point that opens without touch and sorts what goes in. An HC-SR04 detects an approaching hand, a servo drives the lid, IR plus a load cell inspect the item, and a trained classifier routes it to one of four compartments while an ESP32 streams fill levels and status to an IoT dashboard.</p>
+            <p class="iot-deck-meta">24/BSE/BU/R/0001 · Bugema University, Computing and Informatics</p>
+            <div class="iot-deck-photo">
+              <img src="assets/img/projects/smartdustbin.png" alt="Smart IoT Dustbin project photo" loading="lazy" />
+            </div>
+            <div class="iot-deck-slides">
+              <figure><img src="assets/img/ppt/dustbin-1.webp" alt="Smart IoT Dustbin — slide 1" loading="lazy" /></figure>
+              <figure><img src="assets/img/ppt/dustbin-2.webp" alt="Smart IoT Dustbin — slide 2" loading="lazy" /></figure>
+              <figure><img src="assets/img/ppt/dustbin-3.webp" alt="Smart IoT Dustbin — slide 3" loading="lazy" /></figure>
+              <figure><img src="assets/img/ppt/dustbin-4.webp" alt="Smart IoT Dustbin — slide 4" loading="lazy" /></figure>
+              <figure><img src="assets/img/ppt/dustbin-5.webp" alt="Smart IoT Dustbin — slide 5" loading="lazy" /></figure>
+              <figure><img src="assets/img/ppt/dustbin-6.webp" alt="Smart IoT Dustbin — slide 6" loading="lazy" /></figure>
+            </div>
+            <div style="margin-top:14px;"><a class="project-action" href="assets/ppt/smart-dustbin.pdf" target="_blank" rel="noopener noreferrer"><i class="fa fa-play-circle-o"></i> View all 6 slides</a></div>
+            <div class="iot-deck-lists">
+              <div>
+                <h4>Components &amp; roles</h4>
+                <ul class="iot-deck-list">
+                  <li><strong>HC-SR04 ultrasonic</strong><span>Detect an approaching hand</span></li>
+                  <li><strong>SG90 servo</strong><span>Drive the lid open and closed</span></li>
+                  <li><strong>IR + load cell</strong><span>Inspect the deposited item</span></li>
+                  <li><strong>ESP32</strong><span>Classifier + IoT dashboard streaming</span></li>
+                  <li><strong>Four compartments</strong><span>Auto-route and sort the waste</span></li>
+                </ul>
               </div>
-              <div class="project-actions">
-                <span class="project-action is-muted"><i class="fa fa-cubes"></i> Concept project</span>
+              <div>
+                <h4>Signal flow</h4>
+                <ol class="iot-deck-list">
+                  <li><strong>01 · Lid sensor</strong><span>Hand detected, touchless open</span></li>
+                  <li><strong>02 · Sorting bay</strong><span>Item inspected and classified</span></li>
+                  <li><strong>03 · IoT dashboard</strong><span>Streams fill levels and status</span></li>
+                </ol>
               </div>
+            </div>
+            <div class="iot-deck-actions">
+              <a class="project-action" href="assets/ppt/smart-dustbin.pdf" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-pdf-o"></i> View PDF live</a>
+              <a class="project-action is-muted" href="assets/ppt/smart-dustbin.pdf" target="_blank" rel="noopener noreferrer"><i class="fa fa-external-link"></i> Open in new tab</a>
+              <a class="project-action is-muted" href="assets/ppt/smart-dustbin.pptx" download target="_blank" rel="noopener noreferrer"><i class="fa fa-download"></i> PowerPoint (.pptx)</a>
             </div>
           </article>
       </div>
@@ -1387,7 +1453,7 @@
             <div class="resume-item">
               <p><b>Smart Attendance:</b> Achieved 95% accuracy in facial recognition using OpenCV.<br>
               <b>AI Companion:</b> Leveraged NLP for context-aware academic reminders which operates in offline version.<br>
-              <b>IoT Smart Wheelchair:</b> Mobility &amp; safety solution with live slide deck and full proposal (PPT download available).<br>
+              <b>IoT Smart Wheelchair:</b> Mobility &amp; safety solution with live slide deck, PDF and PowerPoint downloads available.<br>
               <b>ShopNet, Muwas, Lanegen &amp; more:</b> 19+ production platforms built and shipped through K.E.E Technologies.</p>
             </div>
           </div>
@@ -1496,7 +1562,8 @@
         <button class="ppt-nav-btn" id="pptNext" type="button" aria-label="Next slide"><i class="fa fa-chevron-right"></i></button>
       </div>
       <div class="ppt-viewer-actions">
-        <a class="kee-btn kee-btn-ghost" href="assets/ppt/IoT_Smart_Wheelchair_Presentation_Final_Updated.pptx" download target="_blank" rel="noopener noreferrer"><i class="fa fa-download"></i> Download .pptx</a>
+        <a class="kee-btn kee-btn-ghost" href="assets/ppt/smart-wheelchair.pdf" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-pdf-o"></i> View PDF</a>
+        <a class="kee-btn kee-btn-ghost" href="assets/ppt/smart-wheelchair.pptx" download target="_blank" rel="noopener noreferrer"><i class="fa fa-download"></i> Download .pptx</a>
       </div>
     </div>
   </div>

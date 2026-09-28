@@ -88,7 +88,11 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: #E85C1A; }
 
 [data-theme="light"] { scrollbar-color: #D1D5DB #F8F9FA; }
-[data-theme="light"] body { background-color: #F8F9FA !important; color: #111827 !important; }
+[data-theme="light"] body {
+  background: linear-gradient(165deg, rgba(232, 92, 26, 0.16) 0%, rgba(168, 85, 247, 0.13) 45%, rgba(59, 130, 246, 0.18) 100%), #FFFFFF !important;
+  background-attachment: fixed !important;
+  color: #111827 !important;
+}
 [data-theme="light"] ::-webkit-scrollbar-track { background: #F8F9FA; }
 [data-theme="light"] ::-webkit-scrollbar-thumb { background: #D1D5DB; }
 [data-theme="light"] ::-webkit-scrollbar-thumb:hover { background: #E85C1A; }
@@ -247,7 +251,7 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
 
 /* ---------- Hero ---------- */
 .hero { background: #0A0A0A !important; }
-[data-theme="light"] .hero { background: #F8F9FA !important; }
+[data-theme="light"] .hero { background: transparent !important; }
 
 .hero-glow {
   background:
@@ -599,7 +603,7 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
   border-bottom: 1px solid #1E1E1E !important;
   background: #0A0A0A !important;
 }
-[data-theme="light"] .hero-stats-belt { background: #F8F9FA !important; }
+[data-theme="light"] .hero-stats-belt { background: transparent !important; }
 .hero-stat strong { font-size: clamp(1.9rem, 3.4vw, 2.6rem) !important; color: #ffffff !important; }
 [data-theme="light"] .hero-stat strong { color: #111827 !important; }
 .hero-stat span {
@@ -613,7 +617,7 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
 
 /* ---------- Tech marquee ---------- */
 .tech-marquee { border-top: 1px solid #1E1E1E !important; border-bottom: 1px solid #1E1E1E !important; background: #0A0A0A !important; }
-[data-theme="light"] .tech-marquee { background: #F8F9FA !important; }
+[data-theme="light"] .tech-marquee { background: transparent !important; }
 .tech-marquee-title {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace !important;
   font-size: 10px !important;
@@ -757,6 +761,97 @@ nav ul li a:not(.nav-cta):hover { background: #0A0A0A !important; color: #ffffff
 }
 
 .project-live { font-family: ui-monospace, monospace !important; font-size: 10px !important; letter-spacing: 0.14em !important; color: #E85C1A !important; }
+
+/* ---------- IoT deck (full-width research presentation cards) ---------- */
+.project-card.iot-deck {
+  grid-column: 1 / -1;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+.iot-deck-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+.iot-deck-titles h3 {
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem) !important;
+  margin: 0 0 4px !important;
+  background: linear-gradient(120deg, #E85C1A 0%, #a855f7 55%, #3b82f6 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+.iot-deck-tagline { margin: 0 !important; color: #A1A1AA !important; font-size: 0.95rem !important; }
+.iot-deck-badges { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.iot-deck-author,
+.iot-deck-count {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace !important;
+  font-size: 10px !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(232, 92, 26, 0.5) !important;
+  background: rgba(10, 10, 10, 0.5) !important;
+  padding: 5px 12px !important;
+}
+.iot-deck-blurb { color: #A1A1AA !important; line-height: 1.68 !important; font-size: 0.95rem !important; margin: 0.9rem 0 0.4rem !important; }
+.iot-deck-meta {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace !important;
+  font-size: 11px !important;
+  letter-spacing: 0.1em !important;
+  color: #71717A !important;
+  margin: 0 0 1rem !important;
+}
+.iot-deck-photo { overflow: hidden; border: 1px solid rgba(232, 92, 26, 0.35) !important; }
+.iot-deck-photo img { display: block; width: 100%; max-height: 420px; object-fit: cover; }
+.iot-deck-slides {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+.iot-deck-slides figure { margin: 0 !important; border: 1px solid #1E1E1E !important; }
+.iot-deck-slides figure:hover { border-color: #a855f7 !important; }
+.iot-deck-slides img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.iot-deck-lists { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 28px; margin-top: 20px; }
+.iot-deck-lists h4 {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace !important;
+  font-size: 11px !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  color: #E85C1A !important;
+  margin: 0 !important;
+  border-bottom: 1px solid #1E1E1E !important;
+  padding-bottom: 8px !important;
+}
+.iot-deck-list {
+  list-style: none;
+  margin: 10px 0 0 !important;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.iot-deck-list li {
+  display: grid;
+  grid-template-columns: 10px auto;
+  gap: 2px 10px;
+  align-items: baseline;
+}
+.iot-deck-list li::before { content: "▸"; color: #a855f7 !important; font-size: 0.7rem; }
+.iot-deck-list li strong { color: #ffffff !important; font-weight: 600; }
+.iot-deck-list li span { color: #71717A !important; font-size: 0.8rem !important; }
+.iot-deck-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+
+[data-theme="light"] .iot-deck-tagline { color: #6B7280 !important; }
+[data-theme="light"] .iot-deck-blurb { color: #4B5563 !important; }
+[data-theme="light"] .iot-deck-meta { color: #6B7280 !important; }
+[data-theme="light"] .iot-deck-author,
+[data-theme="light"] .iot-deck-count { color: #111827 !important; border-color: #D1D5DB !important; background: rgba(17, 24, 39, 0.06) !important; }
+[data-theme="light"] .iot-deck-slides figure { border-color: #E5E7EB !important; }
+[data-theme="light"] .iot-deck-list li strong { color: #111827 !important; }
+[data-theme="light"] .iot-deck-list li span { color: #6B7280 !important; }
+[data-theme="light"] .iot-deck-lists h4 { border-bottom-color: #E5E7EB !important; }
+
+@media (max-width: 720px) {
+  .iot-deck-lists { grid-template-columns: 1fr; }
+  .iot-deck-badges { align-items: flex-start; }
+}
 
 /* ---------- Experience / resume / contact ---------- */
 .resume-paper { background: #111111 !important; border: 1px solid #1E1E1E !important; border-radius: 0 !important; }
