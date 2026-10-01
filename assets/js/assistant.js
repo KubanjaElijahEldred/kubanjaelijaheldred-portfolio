@@ -43,11 +43,12 @@
 
   /* Live projects mirrored from the K.E.E site */
   var PROJECTS = [
+    { t: 'PlayIt — Movie Streaming', d: 'A Flutter movie discovery app built on TMDB — a home page of Recent releases and seven genre rows (Action, Adventure, Sci-Fi, Drama, Horror, Thriller, Series), search, bookmarks and an offline library with downloads.', u: 'https://play-it-movies.vercel.app/', g: 'https://github.com/KubanjaElijahEldred/Movie-App', k: ['playit', 'play it', 'movie', 'movies', 'streaming', 'tmdb', 'flutter', 'film', 'watchlist', 'dart'] },
     { t: 'ShopNet E-Commerce Platform', d: 'A modern e-commerce platform for browsing, carting and checkout — built for speed and mobile-first shopping.', u: 'https://shop-net-steel.vercel.app/', g: 'https://github.com/KubanjaElijahEldred/The-ShopNet', k: ['shop', 'ecommerce', 'e-commerce', 'shopnet', 'store', 'cart', 'retail'] },
     { t: 'Muwas Distilling Platform', d: 'A certified distilling company platform showcasing premium spirits, brand story and product catalogue.', u: 'https://muwas.vercel.app/', g: 'https://github.com/Demagalawrence/muwas', k: ['muwas', 'distilling', 'spirit', 'drinks', 'liquor', 'brand'] },
     { t: 'Chill Talk Podcast Platform', d: 'A podcast platform for discovering, streaming and sharing episodes — a clean, immersive listening experience.', u: 'https://chill-talk-podcast.vercel.app/', g: 'https://github.com/KubanjaElijahEldred/chill-talk-podcast', k: ['podcast', 'chill', 'audio', 'media', 'streaming', 'listen'] },
     { t: 'Lanegen Platform', d: 'Lane General Medical Center feedback and digital services platform for modern healthcare communication.', u: 'https://lanegen-o8ij.vercel.app/', g: 'https://github.com/KubanjaElijahEldred/lane-general-medical-center', k: ['lanegen', 'medical', 'health', 'hospital', 'clinic', 'patient', 'lane'] },
-    { t: 'EV Zone Effects Hub', d: 'A creative effects hub with rich visual effects, animations and interactive components engineered for wow.', u: 'https://e-vzone-efects-hub-project.vercel.app/', g: 'https://github.com/KubanjaElijahEldred/EVzone-Efects-Hub1', k: ['evzone', 'effects', 'hub', 'animation', 'creative', 'visual'] },
+    { t: 'MyEffects Hub', d: 'A creative effects hub with rich visual effects, animations and interactive components engineered for wow.', u: 'https://e-vzone-efects-hub-project.vercel.app/', g: 'https://github.com/KubanjaElijahEldred/EVzone-Efects-Hub1', k: ['myeffects', 'effects', 'hub', 'animation', 'creative', 'visual'] },
     { t: 'Adiray Books — Online Bookstore', d: "A modern online bookstore for South Sudan's leading retailer — browsing, wishlists and multi-currency checkout.", u: 'https://www.adiraybooks.com', g: '', k: ['books', 'bookstore', 'adiray', 'reading', 'library'] },
     { t: 'Tagline (ConnectQR)', d: 'Turns your business card into a QR code — WhatsApp, public profile or offline peer-to-peer. Expo React Native app with a NestJS + PostgreSQL API.', u: '', g: 'https://github.com/Demagalawrence/Tagline', k: ['tagline', 'qr', 'connectqr', 'business card', 'expo', 'badge'] },
     { t: 'WiFi Hotspot Portal', d: 'A high-performance full-stack WiFi captive portal that authenticates guests — Next.js 15 frontend with NestJS + Prisma backend.', u: '', g: 'https://github.com/Demagalawrence/wifi-portal', k: ['wifi', 'hotspot', 'portal', 'captive', 'network', 'internet'] },
@@ -108,7 +109,7 @@
     {
       id: 'projects',
       keys: ['all projects', 'your projects', 'show me projects', 'list projects', 'what projects', 'projects', 'project', 'portfolio', 'your work', 'your apps', 'websites', 'repos', 'github', 'source code'],
-      reply: 'There are ' + PROJECTS.length + ' live projects in the showcase. Name one and I will fill you in — for example ShopNet, Muwas, Chill Talk, Lanegen, EV Zone Effects Hub, Tagline, the WiFi Hotspot Portal, Muno Mukabi SACCO or TravelGo.\n\nOr scroll the Projects section below.'
+      reply: 'There are ' + PROJECTS.length + ' live projects in the showcase. Name one and I will fill you in — for example PlayIt, ShopNet, Muwas, Chill Talk, Lanegen, MyEffects Hub, Tagline, the WiFi Hotspot Portal, Muno Mukabi SACCO or TravelGo.\n\nOr scroll the Projects section below.'
     },
     {
       id: 'tech_frontend',
@@ -228,7 +229,7 @@
     }
 
     return {
-      text: "I don't have that one yet. Try asking about:\n\n• His projects — ShopNet, Muwas, Chill Talk, Lanegen, SACCO, TravelGo\n• His skills and tech stack\n• AI, chatbots and NLP work\n• K.E.E Technologies and the team\n• Education and experience\n• Contact details",
+      text: "I don't have that one yet. Try asking about:\n\n• His projects — PlayIt, ShopNet, Muwas, Chill Talk, Lanegen, SACCO, TravelGo\n• His skills and tech stack\n• AI, chatbots and NLP work\n• K.E.E Technologies and the team\n• Education and experience\n• Contact details",
       actions: [{ label: 'All projects', url: '#projects' }, { label: 'Email ' + PROFILE.short, url: 'mailto:' + PROFILE.email }]
     };
   }
