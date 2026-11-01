@@ -102,12 +102,12 @@
     .global-profile-badge:hover { transform: scale(1.15); }
 
     /* Navigation */
-    nav { background: var(--nav-bg); height: 70px; line-height: 70px; position: fixed; z-index: 1000; box-shadow: none; border-bottom: 1px solid var(--glass-border); width: 100%; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-    nav ul li a { color: var(--text-main); font-weight: 600; transition: color 0.3s ease; }
+    nav { background: linear-gradient(90deg, #0A2470 0%, #1447B8 55%, #0B1E52 100%); height: 70px; line-height: 70px; position: fixed; z-index: 1000; box-shadow: 0 10px 40px rgba(10, 36, 112, 0.45); border-bottom: 1px solid rgba(0, 242, 255, 0.25); width: 100%; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    nav ul li a { color: #E6F4FF; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 11px; transition: color 0.3s ease; }
     nav ul li a:hover { color: var(--accent-cyan); }
     .brand-logo { font-weight: 900; letter-spacing: 2px; }
-    .nav-cta { background: transparent; border: 1px solid var(--accent-cyan); color: var(--accent-cyan) !important; padding: 8px 20px !important; border-radius: 25px; margin-left: 10px; transition: all 0.3s ease; }
-    .nav-cta:hover { background: var(--accent-cyan); color: var(--bg-dark) !important; }
+    .nav-cta { background: linear-gradient(135deg, #1447B8 0%, #0A2470 100%); border: 1px solid rgba(0, 242, 255, 0.6); color: #FFFFFF !important; padding: 9px 22px !important; border-radius: 25px; margin-left: 10px; transition: all 0.3s ease; box-shadow: 0 0 18px rgba(20, 71, 184, 0.55); }
+    .nav-cta:hover { background: linear-gradient(135deg, #1E63D0 0%, #1447B8 100%); color: #FFFFFF !important; }
     .nav-cta i { margin-left: 6px; }
 
     /* Sections */
@@ -446,7 +446,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: var(--nav-bg);
+        background: linear-gradient(90deg, #0A2470 0%, #1447B8 55%, #0B1E52 100%);
         z-index: 9999;
         transform: translateX(-100%);
         transition: transform 0.3s ease;
@@ -782,7 +782,7 @@
       <div class="row">
         <div class="col s12 m6" data-aos="fade-right">
           <h3 class="grad-animated" style="font-weight:900;">About Me</h3>
-          <p class="flow-text">I'm <strong>Kubanja Elijah Eldred</strong> — Managing Director of <strong>K.E.E Technologies Ltd</strong>, a Uganda-based engineering studio building production-grade web applications, mobile applications, AI and NLP systems, and cloud-native infrastructure. I also study Software Engineering at Bugema University.</p>
+          <p class="flow-text">I'm <strong>Kubanja Elijah Eldred</strong> — Managing Director of <strong>K.E.E Technologies Ltd</strong>, a Uganda-based engineering studio building production-grade web applications, mobile applications, AI and NLP systems, and cloud-native infrastructure.</p>
 
           <p class="flow-text">Alongside Mboira Isaac Newton, Demaga Lawrence and Akram Ssengooba, I lead a team focused on intelligent digital solutions that learn, communicate and connect. My work spans frontend UI, backend logic, mobile app development, system design and AI chatbot development that runs fully offline.</p>
 
@@ -856,7 +856,7 @@
     <div class="container">
       <div style="text-align:center;">
         <span class="kee-eyebrow"><i class="fa fa-briefcase"></i> Selected Work</span>
-        <h2 class="kee-section-title">Projects built with <span class="kee-grad-text">K.E.E</span></h2>
+        <h2 class="kee-section-title">Projects built by <span class="kee-grad-text">me</span></h2>
         <p class="kee-section-lede">
           A selection of the platforms, apps and systems delivered through
           K.E.E Technologies Ltd — most of them live and clickable.
@@ -1131,27 +1131,6 @@
               </div>
             </div>
           </article>
-          <article class="project-card" data-cat="platform" data-search="MechanicsHub A vehicle service platform connecting car owners with trusted mechanics. Features online booking, service tracking, mechanic profiles and transparent pricing — delivered as a fast, mobile-first experience with a clean dashboard for managing service history. React Vehicle Services Platform Vercel" style="--card-accent:#f97316">
-            <div class="project-screen">
-              <img src="assets/img/projects/mechanicshub.png" alt="MechanicsHub" loading="lazy" />
-              <div class="project-screen-shine"></div>
-              <span class="project-live"><i></i>Live</span>
-            </div>
-            <div class="project-body">
-              <h3>MechanicsHub</h3>
-              <p>A vehicle service platform connecting car owners with trusted mechanics. Features online booking, service tracking, mechanic profiles and transparent pricing — delivered as a fast, mobile-first experience with a clean dashboard for managing service history.</p>
-              <div class="project-tags">
-                <span class="project-tag">React</span>
-                <span class="project-tag">Vehicle Services</span>
-                <span class="project-tag">Platform</span>
-                <span class="project-tag">Vercel</span>
-              </div>
-              <div class="project-actions">
-                <a class="project-action" href="https://the-mechanic-one.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fa fa-external-link"></i> Live site</a>
-                <a class="project-action" href="https://github.com/KubanjaElijahEldred" target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i> Source</a>
-              </div>
-            </div>
-          </article>
           <div class="iot-decks-grid">
           <article class="project-card iot-deck" data-cat="iot" data-search="IoT Smart Wheelchair — Arm-Gesture Control & Fall Alerts Bugema University research concept — gesture-controlled wheelchair with automated fall alerts: Arduino Uno, MPU6050 motion sensing, 433MHz RF command link, GPS + GSM caregiver SMS. IoT Arduino MPU6050 Embedded Research" style="--card-accent:#22d3ee">
             <div class="iot-deck-head">
@@ -1205,57 +1184,6 @@
               <a class="project-action" href="assets/ppt/smart-wheelchair.pdf" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-pdf-o"></i> View PDF live</a>
               <a class="project-action is-muted" href="assets/ppt/smart-wheelchair.pdf" target="_blank" rel="noopener noreferrer"><i class="fa fa-external-link"></i> Open in new tab</a>
               <a class="project-action is-muted" href="assets/ppt/smart-wheelchair.pptx" download target="_blank" rel="noopener noreferrer"><i class="fa fa-download"></i> PowerPoint (.pptx)</a>
-            </div>
-          </article>
-          <article class="project-card iot-deck" data-cat="iot" data-search="SMART Dustbin IoT smart waste bin concept with fill-level sensing and automated alerts so collection crews only empty bins that actually need it — a cleaner, connected approach to waste management. IoT Sensors Automation Embedded Research" style="--card-accent:#34d399">
-            <div class="iot-deck-head">
-              <div class="iot-deck-titles">
-                <h3>Smart IoT Dustbin</h3>
-                <p class="iot-deck-tagline">Touchless lid control with automatic sorting</p>
-              </div>
-              <div class="iot-deck-badges">
-                <span class="iot-deck-author">Demaga Lawrence</span>
-                <span class="iot-deck-count">6 slides</span>
-              </div>
-            </div>
-            <p class="iot-deck-blurb">A connected waste point that opens without touch and sorts what goes in. An HC-SR04 detects an approaching hand, a servo drives the lid, IR plus a load cell inspect the item, and a trained classifier routes it to one of four compartments while an ESP32 streams fill levels and status to an IoT dashboard.</p>
-            <p class="iot-deck-meta">24/BSE/BU/R/0001 · Bugema University, Computing and Informatics</p>
-            <div class="iot-deck-photo">
-              <img src="assets/img/projects/smartdustbin.png" alt="Smart IoT Dustbin project photo" loading="lazy" />
-            </div>
-            <div class="iot-deck-slides">
-              <figure><img src="assets/img/ppt/dustbin-1.webp" alt="Smart IoT Dustbin — slide 1" loading="lazy" /></figure>
-              <figure><img src="assets/img/ppt/dustbin-2.webp" alt="Smart IoT Dustbin — slide 2" loading="lazy" /></figure>
-              <figure><img src="assets/img/ppt/dustbin-3.webp" alt="Smart IoT Dustbin — slide 3" loading="lazy" /></figure>
-              <figure><img src="assets/img/ppt/dustbin-4.webp" alt="Smart IoT Dustbin — slide 4" loading="lazy" /></figure>
-              <figure><img src="assets/img/ppt/dustbin-5.webp" alt="Smart IoT Dustbin — slide 5" loading="lazy" /></figure>
-              <figure><img src="assets/img/ppt/dustbin-6.webp" alt="Smart IoT Dustbin — slide 6" loading="lazy" /></figure>
-            </div>
-            <div style="margin-top:14px;"><a class="project-action" href="assets/ppt/smart-dustbin.pdf" target="_blank" rel="noopener noreferrer"><i class="fa fa-play-circle-o"></i> View all 6 slides</a></div>
-            <div class="iot-deck-lists">
-              <div>
-                <h4>Components &amp; roles</h4>
-                <ul class="iot-deck-list">
-                  <li><strong>HC-SR04 ultrasonic</strong><span>Detect an approaching hand</span></li>
-                  <li><strong>SG90 servo</strong><span>Drive the lid open and closed</span></li>
-                  <li><strong>IR + load cell</strong><span>Inspect the deposited item</span></li>
-                  <li><strong>ESP32</strong><span>Classifier + IoT dashboard streaming</span></li>
-                  <li><strong>Four compartments</strong><span>Auto-route and sort the waste</span></li>
-                </ul>
-              </div>
-              <div>
-                <h4>Signal flow</h4>
-                <ol class="iot-deck-list">
-                  <li><strong>01 · Lid sensor</strong><span>Hand detected, touchless open</span></li>
-                  <li><strong>02 · Sorting bay</strong><span>Item inspected and classified</span></li>
-                  <li><strong>03 · IoT dashboard</strong><span>Streams fill levels and status</span></li>
-                </ol>
-              </div>
-            </div>
-            <div class="iot-deck-actions">
-              <a class="project-action" href="assets/ppt/smart-dustbin.pdf" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-pdf-o"></i> View PDF live</a>
-              <a class="project-action is-muted" href="assets/ppt/smart-dustbin.pdf" target="_blank" rel="noopener noreferrer"><i class="fa fa-external-link"></i> Open in new tab</a>
-              <a class="project-action is-muted" href="assets/ppt/smart-dustbin.pptx" download target="_blank" rel="noopener noreferrer"><i class="fa fa-download"></i> PowerPoint (.pptx)</a>
             </div>
           </article>
           </div>
